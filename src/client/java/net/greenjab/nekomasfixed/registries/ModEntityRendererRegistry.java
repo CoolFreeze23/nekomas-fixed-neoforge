@@ -1,0 +1,89 @@
+package net.greenjab.nekomasfixed.registries;
+
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.greenjab.nekomasfixed.NekomasFixed;
+import net.greenjab.nekomasfixed.registry.registries.EntityTypeRegistry;
+import net.greenjab.nekomasfixed.render.entity.BaobabBoatRenderer;
+import net.greenjab.nekomasfixed.render.entity.DerelictRenderer;
+import net.greenjab.nekomasfixed.render.entity.DrenchedRenderer;
+import net.greenjab.nekomasfixed.render.entity.RimeRenderer;
+import net.greenjab.nekomasfixed.render.entity.SuspiciousSpiderRenderer;
+import net.greenjab.nekomasfixed.render.entity.MoobloomRenderer;
+import net.greenjab.nekomasfixed.render.entity.TargetDummyRenderer;
+import net.greenjab.nekomasfixed.render.entity.model.*;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.renderer.entity.ItemFrameRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+
+public class ModEntityRendererRegistry {
+
+    public static final ModelLayerLocation BAOBAB_BOAT_LAYER =
+            new ModelLayerLocation(NekomasFixed.id("boat/baobab"), "main");
+    public static final ModelLayerLocation BAOBAB_CHEST_BOAT_LAYER =
+            new ModelLayerLocation(NekomasFixed.id("chest_boat/baobab"), "main");
+    public static final ModelLayerLocation TARGET_DUMMY =
+            new ModelLayerLocation(NekomasFixed.id("target_dummy"), "main");
+    public static final ModelLayerLocation TARGET_DUMMY_BASE =
+            new ModelLayerLocation(NekomasFixed.id("target_dummy"), "base");
+    public static final ModelLayerLocation TARGET_DUMMY_INNER_ARMOR =
+            new ModelLayerLocation(NekomasFixed.id("target_dummy"), "inner_armor");
+    public static final ModelLayerLocation TARGET_DUMMY_OUTER_ARMOR =
+            new ModelLayerLocation(NekomasFixed.id("target_dummy"), "outer_armor");
+    public static final ModelLayerLocation MOOBLOOM =
+            new ModelLayerLocation(NekomasFixed.id("moobloom"), "main");
+    public static final ModelLayerLocation MOOBLOOM_BABY =
+            new ModelLayerLocation(NekomasFixed.id("moobloom"), "baby");
+    public static final ModelLayerLocation DERELICT =
+            new ModelLayerLocation(NekomasFixed.id("derelict"), "main");
+    public static final ModelLayerLocation DERELICT_OUTER_LAYER =
+            new ModelLayerLocation(NekomasFixed.id("derelict"), "outer");
+    public static final ModelLayerLocation DRENCHED =
+            new ModelLayerLocation(NekomasFixed.id("drenched"), "main");
+    public static final ModelLayerLocation RIME =
+            new ModelLayerLocation(NekomasFixed.id("rime"), "main");
+    public static final ModelLayerLocation RIME_OUTER_LAYER =
+            new ModelLayerLocation(NekomasFixed.id("rime"), "outer");
+    public static final ModelLayerLocation SUSPICIOUS_SPIDER =
+            new ModelLayerLocation(NekomasFixed.id("suspicious_spider"), "main");
+
+    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(BAOBAB_BOAT_LAYER, BoatModel::createBodyModel);
+        event.registerLayerDefinition(BAOBAB_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
+        event.registerLayerDefinition(TARGET_DUMMY, TargetDummyModel::createBodyModel);
+        event.registerLayerDefinition(TARGET_DUMMY_BASE, BasePlateModel::createBodyModel);
+        event.registerLayerDefinition(TARGET_DUMMY_INNER_ARMOR,
+                () -> TargetDummyArmorModel.createBodyModel(new CubeDeformation(0.5F)));
+        event.registerLayerDefinition(TARGET_DUMMY_OUTER_ARMOR,
+                () -> TargetDummyArmorModel.createBodyModel(new CubeDeformation(1.0F)));
+        event.registerLayerDefinition(MOOBLOOM, MoobloomModel::getTexturedModelData);
+        event.registerLayerDefinition(MOOBLOOM_BABY, BabyMoobloomModel::getTexturedModelData);
+        event.registerLayerDefinition(DERELICT, DerelictModel::createBodyLayer);
+        event.registerLayerDefinition(DERELICT_OUTER_LAYER, DerelictModel::createOuterLayer);
+        event.registerLayerDefinition(DRENCHED, DrenchedModel::createBodyLayer);
+        event.registerLayerDefinition(RIME, RimeModel::createBodyLayer);
+        event.registerLayerDefinition(RIME_OUTER_LAYER, RimeModel::createOuterLayer);
+        event.registerLayerDefinition(SUSPICIOUS_SPIDER, SuspiciousSpiderModel::createBodyLayer);
+
+    }
+
+    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(EntityTypeRegistry.BAOBAB_BOAT, context ->
+                new BaobabBoatRenderer(context, BAOBAB_BOAT_LAYER, false,
+                        NekomasFixed.id("textures/entity/boat/baobab.png")));
+        event.registerEntityRenderer(EntityTypeRegistry.BAOBAB_CHEST_BOAT, context ->
+                new BaobabBoatRenderer(context, BAOBAB_CHEST_BOAT_LAYER, true,
+                        NekomasFixed.id("textures/entity/chest_boat/baobab.png")));
+        event.registerEntityRenderer(EntityTypeRegistry.TARGET_DUMMY, TargetDummyRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.CLEAR_ITEM_FRAME, ItemFrameRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.MOOBLOOM, MoobloomRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.DERELICT, DerelictRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.DRENCHED, DrenchedRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.RIME, RimeRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.SUSPICIOUS_SPIDER, SuspiciousSpiderRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.SLOWNESS_SNOWBALL, ThrownItemRenderer::new);
+        event.registerEntityRenderer(EntityTypeRegistry.SLINGSHOT_PROJECTILE, ThrownItemRenderer::new);
+    }
+}

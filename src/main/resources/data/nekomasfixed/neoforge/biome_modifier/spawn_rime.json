@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#nekomasfixed:spawns_rime",
+  "spawners": {
+    "type": "nekomasfixed:rime",
+    "weight": 100,
+    "minCount": 4,
+    "maxCount": 4
+  }
+}

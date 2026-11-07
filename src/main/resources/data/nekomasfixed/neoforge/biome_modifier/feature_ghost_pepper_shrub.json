@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:soul_sand_valley"
+  ],
+  "features": "nekomasfixed:ghost_pepper_shrub",
+  "step": "vegetal_decoration"
+}
