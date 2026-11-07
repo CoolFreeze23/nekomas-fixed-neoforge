@@ -1,0 +1,91 @@
+# Terracotta pots, soup cauldrons, sulfur lights, new slabs and stairs, brushes, messy beds
+time set noon
+gamerule doMobSpawning false
+gamerule doDaylightCycle false
+gamerule doFireTick false
+fill -30 -60 -6 30 -60 40 minecraft:smooth_stone
+fill -30 -59 -6 30 -50 40 minecraft:air
+# pots, seen from the north
+setblock -5 -59 4 minecraft:decorated_pot[horizontal_facing=south]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"]}
+setblock -4 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]
+setblock -3 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"]}
+setblock -2 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],engraved:["minecraft:air","minecraft:air","minecraft:air","minecraft:gold_ingot"]}
+setblock -1 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:skull_pottery_sherd"],engraved:["minecraft:air","minecraft:air","minecraft:air","minecraft:diamond"]}
+setblock 0 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{pot_face:{block:{Name:"minecraft:light_blue_glazed_terracotta"}}}
+setblock 1 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],pot_face:{block:{Name:"minecraft:light_blue_glazed_terracotta"}}}
+setblock 2 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{pot_face:{block:{Name:"minecraft:orange_terracotta"}}}
+setblock 3 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{pot_face:{block:{Name:"nekomasfixed:indigo_glazed_terracotta"}}}
+setblock 4 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:heart_pottery_sherd"],"nekomasfixed.sherd_glow_overrides":[B;0B,0B,0B,1B]}
+setblock 5 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=east]{sherds:["minecraft:skull_pottery_sherd","minecraft:miner_pottery_sherd","minecraft:prize_pottery_sherd","minecraft:blade_pottery_sherd"]}
+item replace entity @s hotbar.0 with nekomasfixed:terracotta_decorated_pot[minecraft:pot_decorations=["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],minecraft:pot_face_block={block:{Name:"minecraft:light_blue_glazed_terracotta"}}]
+item replace entity @s hotbar.1 with nekomasfixed:terracotta_decorated_pot[minecraft:pot_decorations=["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],minecraft:pot_engraved_decorations=["minecraft:air","minecraft:air","minecraft:air","minecraft:gold_ingot"]]
+item replace entity @s hotbar.2 with nekomasfixed:amber_dyed_brush
+item replace entity @s hotbar.3 with nekomasfixed:red_dyed_brush
+item replace entity @s hotbar.4 with nekomasfixed:special_stew[minecraft:dyed_color=8413225]
+item replace entity @s hotbar.5 with nekomasfixed:sulfur_torch
+item replace entity @s hotbar.6 with nekomasfixed:sulfur_lantern
+item replace entity @s hotbar.7 with nekomasfixed:sulfur_campfire
+item replace entity @s hotbar.8 with nekomasfixed:gold_chain
+tp @s 0 -59 0 0 15
+summon minecraft:item_frame -1 -57 8 {Facing:2b,Item:{id:"nekomasfixed:terracotta_decorated_pot",count:1}}
+fill -3 -59 9 3 -56 9 minecraft:stone
+setblock -1 -57 9 minecraft:stone
+wait 60
+hud on
+shot pots
+# soup states: water cauldron, soup with ingredients, stirred soup, side by side over campfires
+setblock -3 -59 16 minecraft:campfire
+setblock -3 -58 16 minecraft:water_cauldron[level=3]
+setblock -1 -59 16 minecraft:campfire
+setblock -1 -58 16 nekomasfixed:soup_cauldron{inputs:[{id:"minecraft:apple",count:1},{id:"minecraft:carrot",count:1},{id:"minecraft:beef",count:1}]}
+setblock 1 -59 16 minecraft:campfire
+setblock 1 -58 16 nekomasfixed:soup_cauldron{HasStirred:1b,inputs:[{id:"minecraft:apple",count:1},{id:"minecraft:carrot",count:1},{id:"minecraft:cooked_beef",count:1}]}
+setblock 3 -59 16 minecraft:campfire
+setblock 3 -58 16 nekomasfixed:soup_cauldron{HasStirred:1b,inputs:[{id:"minecraft:apple",count:1},{id:"minecraft:beetroot",count:1}]}
+tp @s 0 -56 12 0 30
+wait 80
+hud off
+shot soup
+# sulfur blocks and flames
+setblock -4 -59 24 minecraft:yellow_terracotta
+setblock -4 -58 24 nekomasfixed:sulfur_fire
+setblock -2 -59 24 nekomasfixed:sulfur_torch
+setblock -1 -59 24 minecraft:stone
+setblock -1 -58 25 minecraft:stone
+setblock -1 -58 24 nekomasfixed:wall_sulfur_torch[facing=north]
+setblock 0 -59 24 nekomasfixed:sulfur_lantern
+setblock 1 -57 24 minecraft:stone
+setblock 1 -58 24 nekomasfixed:sulfur_lantern[hanging=true]
+setblock 2 -59 24 nekomasfixed:sulfur_campfire[lit=true]
+setblock 3 -59 24 nekomasfixed:gold_chain
+setblock 3 -58 24 nekomasfixed:gold_chain
+tp @s 0 -58 20 0 10
+wait 60
+shot sulfur
+# new slabs and stairs, messy beds
+setblock -10 -59 32 nekomasfixed:white_wool_slab
+setblock -9 -59 32 nekomasfixed:red_wool_stairs[facing=south]
+setblock -8 -59 32 nekomasfixed:amber_wool_slab
+setblock -7 -59 32 nekomasfixed:aqua_wool_stairs[facing=south]
+setblock -6 -59 32 nekomasfixed:indigo_wool_slab[type=top]
+setblock -5 -59 32 nekomasfixed:maroon_wool_stairs[facing=south,half=top]
+setblock -4 -59 32 nekomasfixed:white_spotted_wool_slab
+setblock -3 -59 32 nekomasfixed:black_spotted_wool_stairs[facing=south]
+setblock -2 -59 32 nekomasfixed:amber_spotted_wool_slab[type=double]
+setblock -1 -59 32 nekomasfixed:maroon_spotted_wool_stairs[facing=south]
+setblock 0 -59 32 nekomasfixed:lime_concrete_slab
+setblock 1 -59 32 nekomasfixed:blue_concrete_stairs[facing=south]
+setblock 2 -59 32 nekomasfixed:amber_concrete_slab
+setblock 3 -59 32 nekomasfixed:aqua_concrete_stairs[facing=south]
+setblock 4 -59 32 nekomasfixed:indigo_concrete_slab
+setblock 5 -59 32 nekomasfixed:maroon_concrete_stairs[facing=south]
+setblock -2 -59 28 minecraft:red_bed[part=foot,facing=south,messy=true]
+setblock -2 -59 29 minecraft:red_bed[part=head,facing=south,messy=true]
+setblock -4 -59 28 minecraft:red_bed[part=foot,facing=south]
+setblock -4 -59 29 minecraft:red_bed[part=head,facing=south]
+setblock 0 -59 28 nekomasfixed:amber_bed[part=foot,facing=south,messy=true]
+setblock 0 -59 29 nekomasfixed:amber_bed[part=head,facing=south,messy=true]
+tp @s -2 -56 25 0 35
+wait 60
+shot colours
+report pots soup colour done

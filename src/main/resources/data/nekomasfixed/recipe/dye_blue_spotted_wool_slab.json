@@ -1,0 +1,72 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "spotted_wool_slab_dye",
+  "ingredients": [
+    {
+      "item": "minecraft:blue_wool"
+    },
+    [
+      {
+        "item": "nekomasfixed:white_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:orange_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:magenta_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:light_blue_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:yellow_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:lime_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:pink_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:gray_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:light_gray_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:cyan_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:purple_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:brown_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:green_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:red_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:black_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:amber_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:aqua_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:indigo_spotted_wool_slab"
+      },
+      {
+        "item": "nekomasfixed:maroon_spotted_wool_slab"
+      }
+    ]
+  ],
+  "result": {
+    "id": "nekomasfixed:blue_spotted_wool_slab"
+  }
+}

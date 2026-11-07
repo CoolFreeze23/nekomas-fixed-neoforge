@@ -1,0 +1,33 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "trims/color_palettes/trim_palette",
+      "permutations": {
+        "quartz": "trims/color_palettes/quartz",
+        "iron": "trims/color_palettes/iron",
+        "gold": "trims/color_palettes/gold",
+        "diamond": "trims/color_palettes/diamond",
+        "netherite": "trims/color_palettes/netherite",
+        "redstone": "trims/color_palettes/redstone",
+        "copper": "trims/color_palettes/copper",
+        "emerald": "trims/color_palettes/emerald",
+        "lapis": "trims/color_palettes/lapis",
+        "amethyst": "trims/color_palettes/amethyst"
+      },
+      "textures": [
+        "nekomasfixed:trims/entity/pot/blade",
+        "nekomasfixed:trims/entity/pot/blank",
+        "nekomasfixed:trims/entity/pot/miner",
+        "nekomasfixed:trims/entity/pot/mourner",
+        "nekomasfixed:trims/entity/pot/plenty",
+        "nekomasfixed:trims/entity/pot/prize",
+        "nekomasfixed:trims/entity/pot/scrape",
+        "nekomasfixed:trims/entity/pot/sheaf",
+        "nekomasfixed:trims/entity/pot/shelter",
+        "nekomasfixed:trims/entity/pot/skull",
+        "nekomasfixed:trims/entity/pot/snort"
+      ]
+    }
+  ]
+}

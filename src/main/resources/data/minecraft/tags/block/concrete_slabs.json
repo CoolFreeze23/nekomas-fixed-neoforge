@@ -1,0 +1,24 @@
+{
+  "values": [
+    "nekomasfixed:white_concrete_slab",
+    "nekomasfixed:orange_concrete_slab",
+    "nekomasfixed:magenta_concrete_slab",
+    "nekomasfixed:light_blue_concrete_slab",
+    "nekomasfixed:yellow_concrete_slab",
+    "nekomasfixed:lime_concrete_slab",
+    "nekomasfixed:pink_concrete_slab",
+    "nekomasfixed:gray_concrete_slab",
+    "nekomasfixed:light_gray_concrete_slab",
+    "nekomasfixed:cyan_concrete_slab",
+    "nekomasfixed:purple_concrete_slab",
+    "nekomasfixed:blue_concrete_slab",
+    "nekomasfixed:brown_concrete_slab",
+    "nekomasfixed:green_concrete_slab",
+    "nekomasfixed:red_concrete_slab",
+    "nekomasfixed:black_concrete_slab",
+    "nekomasfixed:amber_concrete_slab",
+    "nekomasfixed:aqua_concrete_slab",
+    "nekomasfixed:indigo_concrete_slab",
+    "nekomasfixed:maroon_concrete_slab"
+  ]
+}

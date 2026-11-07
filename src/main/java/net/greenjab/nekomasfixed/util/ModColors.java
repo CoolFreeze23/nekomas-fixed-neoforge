@@ -1,6 +1,8 @@
 package net.greenjab.nekomasfixed.util;
 
+import net.greenjab.nekomasfixed.registry.registries.ItemRegistry;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.item.Item;
 import org.jspecify.annotations.NonNull;
 
 public class ModColors implements StringRepresentable {
@@ -24,6 +26,14 @@ public class ModColors implements StringRepresentable {
 
     public int getColor(){
         return color;
+    }
+
+    /** The firework colour of one of the four extra dyes, as plain RGB. */
+    public static int fireworkColor(Item dye) {
+        if (dye == ItemRegistry.AMBER_DYE) return AMBER.getColor();
+        if (dye == ItemRegistry.AQUA_DYE) return AQUA.getColor();
+        if (dye == ItemRegistry.INDIGO_DYE) return INDIGO.getColor();
+        return MAROON.getColor();
     }
 
     @Override
