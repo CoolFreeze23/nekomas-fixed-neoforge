@@ -455,7 +455,7 @@ public class BoatsGameTests {
     }
 
     /** Drives the real spawner over a far-off patch of ocean, in a batch of its own because it changes the time of day. */
-    @GameTest(template = "platform", batch = "boat_patrol", timeoutTicks = 200, batch = "patrols")
+    @GameTest(template = "platform", batch = "boat_patrol", timeoutTicks = 200)
     public static void patrolsSailOnTheOcean(GameTestHelper h) {
         ServerLevel level = h.getLevel();
         // A new patch each run: a kept test world may still hold the ships of an earlier one.
