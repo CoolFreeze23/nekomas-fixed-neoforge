@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:gunpowder"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "S",
+    "T"
+  ],
+  "result": {
+    "count": 4,
+    "id": "nekomasfixed:sulfur_torch"
+  }
+}

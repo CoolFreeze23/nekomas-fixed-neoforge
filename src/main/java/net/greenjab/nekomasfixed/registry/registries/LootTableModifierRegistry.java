@@ -48,7 +48,7 @@ public class LootTableModifierRegistry {
     public static void onLootTableLoad(LootTableLoadEvent event) {
         ResourceKey<LootTable> key = ResourceKey.create(Registries.LOOT_TABLE, event.getName());
         DataComponentType<?> component;
-        if (key.equals(Blocks.DECORATED_POT.getLootTable())) {
+        if (key.equals(Blocks.DECORATED_POT.getLootTable()) || key.equals(PotRegistry.TERRACOTTA_DECORATED_POT.getLootTable())) {
             component = ComponentRegistry.SHERD_GLOW_OVERRIDES;
         } else if (bannerTables().contains(key)) {
             component = ComponentRegistry.BANNER_EFFECTS;

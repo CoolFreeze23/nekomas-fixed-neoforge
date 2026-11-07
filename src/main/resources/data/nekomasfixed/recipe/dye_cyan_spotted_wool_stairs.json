@@ -1,0 +1,72 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "spotted_wool_stairs_dye",
+  "ingredients": [
+    {
+      "item": "minecraft:cyan_wool"
+    },
+    [
+      {
+        "item": "nekomasfixed:white_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:orange_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:magenta_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:light_blue_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:yellow_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:lime_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:pink_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:gray_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:light_gray_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:purple_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:blue_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:brown_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:green_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:red_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:black_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:amber_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:aqua_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:indigo_spotted_wool_stairs"
+      },
+      {
+        "item": "nekomasfixed:maroon_spotted_wool_stairs"
+      }
+    ]
+  ],
+  "result": {
+    "id": "nekomasfixed:cyan_spotted_wool_stairs"
+  }
+}

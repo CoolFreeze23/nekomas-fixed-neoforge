@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:gold_nugget"
+    },
+    "T": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "#",
+    "T",
+    "#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "nekomasfixed:gold_chain"
+  }
+}

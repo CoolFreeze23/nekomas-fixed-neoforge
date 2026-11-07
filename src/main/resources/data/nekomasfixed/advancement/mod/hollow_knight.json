@@ -1,0 +1,332 @@
+{
+  "parent": "nekomasfixed:mod/root",
+  "criteria": {
+    "obtained_hollow_acacia_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_acacia_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_bamboo_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_bamboo_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_baobab_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_baobab_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_birch_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_birch_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_cherry_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_cherry_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_crimson_stem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_crimson_stem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_dark_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_dark_oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_jungle_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_jungle_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_mangrove_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_mangrove_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_oak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_spruce_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_spruce_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_hollow_warped_stem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:hollow_warped_stem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_acacia_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_acacia_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_bamboo_hollow_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_bamboo_hollow_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_baobab_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_baobab_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_birch_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_birch_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_cherry_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_cherry_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_crimson_hollow_stem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_crimson_hollow_stem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_dark_oak_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_dark_oak_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_jungle_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_jungle_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_mangrove_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_mangrove_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_oak_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_oak_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_spruce_hollow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_spruce_hollow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "obtained_stripped_warped_hollow_stem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nekomasfixed:stripped_warped_hollow_stem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nekomasfixed.hollow_knight.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "nekomasfixed:hollow_birch_log"
+    },
+    "title": {
+      "translate": "advancements.nekomasfixed.hollow_knight.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtained_hollow_acacia_log"
+    ],
+    [
+      "obtained_hollow_bamboo_block"
+    ],
+    [
+      "obtained_hollow_baobab_log"
+    ],
+    [
+      "obtained_hollow_birch_log"
+    ],
+    [
+      "obtained_hollow_cherry_log"
+    ],
+    [
+      "obtained_hollow_crimson_stem"
+    ],
+    [
+      "obtained_hollow_dark_oak_log"
+    ],
+    [
+      "obtained_hollow_jungle_log"
+    ],
+    [
+      "obtained_hollow_mangrove_log"
+    ],
+    [
+      "obtained_hollow_oak_log"
+    ],
+    [
+      "obtained_hollow_spruce_log"
+    ],
+    [
+      "obtained_hollow_warped_stem"
+    ],
+    [
+      "obtained_stripped_acacia_hollow_log"
+    ],
+    [
+      "obtained_stripped_bamboo_hollow_block"
+    ],
+    [
+      "obtained_stripped_baobab_hollow_log"
+    ],
+    [
+      "obtained_stripped_birch_hollow_log"
+    ],
+    [
+      "obtained_stripped_cherry_hollow_log"
+    ],
+    [
+      "obtained_stripped_crimson_hollow_stem"
+    ],
+    [
+      "obtained_stripped_dark_oak_hollow_log"
+    ],
+    [
+      "obtained_stripped_jungle_hollow_log"
+    ],
+    [
+      "obtained_stripped_mangrove_hollow_log"
+    ],
+    [
+      "obtained_stripped_oak_hollow_log"
+    ],
+    [
+      "obtained_stripped_spruce_hollow_log"
+    ],
+    [
+      "obtained_stripped_warped_hollow_stem"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

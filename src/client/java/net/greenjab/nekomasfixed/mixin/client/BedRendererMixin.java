@@ -3,10 +3,12 @@ package net.greenjab.nekomasfixed.mixin.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.greenjab.nekomasfixed.NekomasFixed;
 import net.greenjab.nekomasfixed.registry.registries.BlockRegistry;
+import net.greenjab.nekomasfixed.util.MessyBedAccessor;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BedRenderer;
 import net.minecraft.client.resources.model.Material;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BedBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,6 +30,10 @@ public class BedRendererMixin {
             PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         if (material.atlasLocation().equals(Sheets.BED_SHEET)) {
             var block = blockEntity.getBlockState().getBlock();
+            if (blockEntity.getBlockState().hasProperty(MessyBedAccessor.MESSY) && blockEntity.getBlockState().getValue(MessyBedAccessor.MESSY)) {
+                String colour = BuiltInRegistries.BLOCK.getKey(block).getPath().replace("_bed", "");
+                return new Material(Sheets.BED_SHEET, NekomasFixed.id("entity/bed/" + colour + "_messy"));
+            }
             var sprite = block == BlockRegistry.AMBER_BED ? "entity/bed/amber"
                     : block == BlockRegistry.AQUA_BED ? "entity/bed/aqua"
                     : block == BlockRegistry.INDIGO_BED ? "entity/bed/indigo"

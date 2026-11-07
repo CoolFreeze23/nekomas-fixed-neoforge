@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:purple_concrete"
+  },
+  "result": {
+    "id": "nekomasfixed:purple_concrete_stairs"
+  }
+}

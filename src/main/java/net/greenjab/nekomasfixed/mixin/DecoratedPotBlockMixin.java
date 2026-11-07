@@ -1,10 +1,11 @@
 package net.greenjab.nekomasfixed.mixin;
 
-import com.mojang.datafixers.util.Pair;
+import net.greenjab.nekomasfixed.registry.block.entity.PotMaps;
+import net.greenjab.nekomasfixed.registry.block.enums.SpriteFacing;
 import net.greenjab.nekomasfixed.registry.registries.ComponentRegistry;
 import net.greenjab.nekomasfixed.target_access_class.DecoratedPotAccess;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 @Mixin(DecoratedPotBlock.class)
 public class DecoratedPotBlockMixin {
@@ -34,14 +34,11 @@ public class DecoratedPotBlockMixin {
     private void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag, CallbackInfo ci) {
         PotDecorations decorations = stack.getOrDefault(DataComponents.POT_DECORATIONS, PotDecorations.EMPTY);
         List<Boolean> glowOverrides = stack.getOrDefault(ComponentRegistry.SHERD_GLOW_OVERRIDES, ComponentRegistry.DEFAULT_SHERD_GLOW_OVERRIDES);
-        Stream.of(
-                new Pair<>(decorations.front(), DecoratedPotAccess.FRONT),
-                new Pair<>(decorations.left(), DecoratedPotAccess.LEFT),
-                new Pair<>(decorations.right(), DecoratedPotAccess.RIGHT),
-                new Pair<>(decorations.back(), DecoratedPotAccess.BACK)
-        ).forEach(
-                pair -> tooltipComponents.add((new ItemStack(pair.getFirst().orElse(Items.BRICK), 1)).getHoverName().plainCopy().withStyle(glowOverrides.get(pair.getSecond()) ? ChatFormatting.WHITE : ChatFormatting.GRAY))
-        );
+        tooltipComponents.add(CommonComponents.EMPTY);
+        tooltipComponents.add(PotMaps.sideTooltip(decorations.front(), Items.AIR, SpriteFacing.BACK, glowOverrides.get(DecoratedPotAccess.FRONT)));
+        tooltipComponents.add(PotMaps.sideTooltip(decorations.left(), Items.AIR, SpriteFacing.LEFT, glowOverrides.get(DecoratedPotAccess.LEFT)));
+        tooltipComponents.add(PotMaps.sideTooltip(decorations.right(), Items.AIR, SpriteFacing.RIGHT, glowOverrides.get(DecoratedPotAccess.RIGHT)));
+        tooltipComponents.add(PotMaps.sideTooltip(decorations.back(), Items.AIR, SpriteFacing.FRONT, glowOverrides.get(DecoratedPotAccess.BACK)));
         ci.cancel();
     }
 }

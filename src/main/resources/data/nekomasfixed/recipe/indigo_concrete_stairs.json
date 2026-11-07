@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "concrete_stairs",
+  "key": {
+    "#": {
+      "item": "nekomasfixed:indigo_concrete"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "nekomasfixed:indigo_concrete_stairs"
+  }
+}

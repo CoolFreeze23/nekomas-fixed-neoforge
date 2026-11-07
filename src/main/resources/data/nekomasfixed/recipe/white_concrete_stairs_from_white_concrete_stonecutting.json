@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:white_concrete"
+  },
+  "result": {
+    "id": "nekomasfixed:white_concrete_stairs"
+  }
+}

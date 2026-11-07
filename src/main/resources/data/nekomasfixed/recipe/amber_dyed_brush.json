@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "dyed_brush",
+  "key": {
+    "#": {
+      "item": "nekomasfixed:amber_dye"
+    },
+    "D": {
+      "item": "minecraft:brush"
+    }
+  },
+  "pattern": [
+    "###",
+    "#D#",
+    "###"
+  ],
+  "result": {
+    "id": "nekomasfixed:amber_dyed_brush"
+  }
+}

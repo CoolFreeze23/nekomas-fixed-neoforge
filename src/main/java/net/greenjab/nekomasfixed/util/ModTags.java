@@ -2,6 +2,7 @@ package net.greenjab.nekomasfixed.util;
 
 import net.greenjab.nekomasfixed.NekomasFixed;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -56,6 +57,27 @@ public class ModTags {
     public static final TagKey<Block> TORCHES = blockTag("torches");
     public static final TagKey<Item> FLOWER_CROWNS = itemTag("flower_crowns");
     public static final TagKey<Item> GOAT_HORN_HELMETS = itemTag("goat_horn_helmets");
+    // Dyed brush and terracotta pot tags.
+    public static final TagKey<Block> CAN_BE_DYED_WITH_BRUSH = blockTag("can_be_dyed_with_brush");
+    public static final TagKey<Block> DYED_BRICKS = blockTag("dyed_bricks");
+    public static final TagKey<Block> DYED_BRICK_SLABS = blockTag("dyed_brick_slabs");
+    public static final TagKey<Block> DYED_BRICK_STAIRS = blockTag("dyed_brick_stairs");
+    public static final TagKey<Block> DYED_BRICK_WALLS = blockTag("dyed_brick_walls");
+    public static final TagKey<Block> STAINED_GLASSES = blockTag("stained_glasses");
+    public static final TagKey<Block> STAINED_GLASS_PANES = blockTag("stained_glass_panes");
+    public static final TagKey<Block> CONCRETES = blockTag("concretes");
+    public static final TagKey<Block> CONCRETE_POWDERS = blockTag("concrete_powders");
+    public static final TagKey<Block> SPOTTED_WOOLS = blockTag("spotted_wools");
+    public static final TagKey<Block> SPOTTED_CARPETS = blockTag("spotted_carpets");
+    public static final TagKey<Block> SPOTTED_WOOL_SLABS = blockTag("spotted_wool_slabs");
+    public static final TagKey<Block> SPOTTED_WOOL_STAIRS = blockTag("spotted_wool_stairs");
+    public static final TagKey<Block> WOOL_SLABS = TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("wool_slabs"));
+    public static final TagKey<Block> WOOL_STAIRS = TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("wool_stairs"));
+    public static final TagKey<Block> CONCRETE_SLABS = TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("concrete_slabs"));
+    public static final TagKey<Block> CONCRETE_STAIRS = TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("concrete_stairs"));
+    public static final TagKey<Block> CAN_BECOME_POT_FACE = blockTag("can_become_pot_face");
+    public static final TagKey<Block> SULFUR_BLOCKS = blockTag("sulfur_blocks");
+    public static final TagKey<Item> CAN_BE_ENGRAVED = itemTag("can_be_engraved");
 
     private static TagKey<Block> blockTag(String path) {
         return TagKey.create(Registries.BLOCK, NekomasFixed.id(path));

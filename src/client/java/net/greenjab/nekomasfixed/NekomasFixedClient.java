@@ -4,6 +4,7 @@ import net.greenjab.nekomasfixed.mixin.client.ItemPropertiesAccessor;
 import net.greenjab.nekomasfixed.registries.ModBlockEntityRendererRegistry;
 import net.greenjab.nekomasfixed.registries.ModEntityRendererRegistry;
 import net.greenjab.nekomasfixed.registries.TermiteCrownClient;
+import net.greenjab.nekomasfixed.registries.PotSoupColourClient;
 import net.greenjab.nekomasfixed.registry.registries.BlockRegistry;
 import net.greenjab.nekomasfixed.registry.registries.ClamStateProperty;
 import net.greenjab.nekomasfixed.registry.registries.ItemRegistry;
@@ -33,6 +34,7 @@ public class NekomasFixedClient {
         modBus.addListener(NekomasFixedClient::onRegisterRenderers);
         modBus.addListener(TermiteCrownClient::addLayers);
         modBus.addListener(TermiteCrownClient::registerTooltips);
+        PotSoupColourClient.attach(modBus);
     }
 
     private static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {

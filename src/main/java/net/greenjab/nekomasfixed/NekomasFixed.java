@@ -61,11 +61,13 @@ public class NekomasFixed {
         modBus.addListener(NekomasFixed::onRegister);
         modBus.addListener(SyncHandler::register);
         modBus.addListener(BlockEntityRegistry::attachBlockEntities);
+        modBus.addListener(SulfurRegistry::attachBlockEntities);
         modBus.addListener(EntityTypeRegistry::registerAttributes);
         modBus.addListener(EntityTypeRegistry::registerSpawnPlacements);
         modBus.addListener(TermiteRegistry::registerAttributes);
         modBus.addListener(CrownRegistry::modifyComponents);
         NeoForge.EVENT_BUS.addListener(GlowingDecoratedPotPatternRegistry::onUseBlock);
+        NeoForge.EVENT_BUS.addListener(PotInteractions::onUseBlock);
         NeoForge.EVENT_BUS.addListener(LootTableModifierRegistry::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener(BlockRegistry::onToolModification);
         NeoForge.EVENT_BUS.addListener(LootTableAdditions::onLootTableLoad);
@@ -134,5 +136,10 @@ public class NekomasFixed {
         TrimRegistry.register();
         CrownRegistry.register();
         GoatHornRegistry.register();
+        ColourBlockRegistry.register();
+        PotRegistry.register();
+        SoupRegistry.register();
+        SulfurRegistry.register();
+        BrushRegistry.register();
     }
 }

@@ -24,6 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.*;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -95,12 +96,15 @@ public class GlowingDecoratedPotPatternRegistry {
                     return InteractionResult.PASS;
                 }
                 // Process Decorated Pot use
-            } else if (blockEntity instanceof DecoratedPotBlockEntity decoratedPotBlockEntity) {
-                if (world.isClientSide) {
-                    return !hasGlowInkSac ? InteractionResult.CONSUME : InteractionResult.SUCCESS;
+            } else if (blockEntity instanceof DecoratedPotAccess nekomasfixedPot) {
+                // Only glow ink: every other right click on a pot goes on to the pot itself.
+                if (!hasGlowInkSac) {
+                    return InteractionResult.PASS;
                 }
-                DecoratedPotAccess nekomasfixedPot = (DecoratedPotAccess) decoratedPotBlockEntity;
-                int face = getDecoratedPotFaceIndex(hit.getDirection(), decoratedPotBlockEntity.getDirection());
+                if (world.isClientSide) {
+                    return InteractionResult.SUCCESS;
+                }
+                int face = getDecoratedPotFaceIndex(hit.getDirection(), blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING));
                 if (face != -1 && !nekomasfixedPot.nekomasfixed$getSherdGlow(face)) {
                     world.playSound(null, pos, SoundEvents.GLOW_INK_SAC_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
                     nekomasfixedPot.nekomasfixed$setSherdGlow(face, true);

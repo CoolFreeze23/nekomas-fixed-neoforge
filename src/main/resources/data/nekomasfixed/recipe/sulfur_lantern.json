@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:gold_nugget"
+    },
+    "T": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "pattern": [
+    "III",
+    "ITI",
+    "III"
+  ],
+  "result": {
+    "id": "nekomasfixed:sulfur_lantern"
+  }
+}

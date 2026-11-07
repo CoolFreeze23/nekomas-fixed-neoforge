@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "spotted_wool_stairs",
+  "key": {
+    "#": {
+      "item": "nekomasfixed:blue_spotted_wool"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "nekomasfixed:blue_spotted_wool_stairs"
+  }
+}
