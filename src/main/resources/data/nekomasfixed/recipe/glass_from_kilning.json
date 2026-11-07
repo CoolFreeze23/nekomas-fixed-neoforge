@@ -1,0 +1,13 @@
+{
+  "type": "nekomasfixed:kilning",
+  "category": "blocks",
+  "ingredient": {
+    "item": "minecraft:sand"
+  },
+  "result": {
+    "id": "minecraft:glass",
+    "count": 1
+  },
+  "experience": 0.4,
+  "cookingtime": 100
+}

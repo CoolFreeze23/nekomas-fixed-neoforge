@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "NEKOMASFIXED_KILN",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "NEKOMASFIXED_KILN_SEARCH",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": { "class": "net/greenjab/nekomasfixed/registries/ModRecipeBookCategories", "field": "KILN_SEARCH" }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "NEKOMASFIXED_KILN_BLOCKS",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": { "class": "net/greenjab/nekomasfixed/registries/ModRecipeBookCategories", "field": "KILN_BLOCKS" }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "NEKOMASFIXED_KILN_MISC",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": { "class": "net/greenjab/nekomasfixed/registries/ModRecipeBookCategories", "field": "KILN_MISC" }
+    }
+  ]
+}

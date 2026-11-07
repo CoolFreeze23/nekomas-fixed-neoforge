@@ -1,0 +1,88 @@
+# Kiln and fletching screens, quiver tooltip, tinted foil on held items and worn armor
+time set noon
+gamerule doMobSpawning false
+gamerule doDaylightCycle false
+recipe give @s *
+tp @s 0 -59 0 0 0
+fill -8 -60 -2 8 -60 12 minecraft:smooth_stone
+setblock 0 -59 3 nekomasfixed:kiln[facing=south]
+setblock 1 -59 3 nekomasfixed:kiln[facing=south,lit=true]
+setblock -1 -59 3 minecraft:fletching_table
+wait 40
+hud off
+shot blocks
+hud on
+useblock 0 -59 3
+wait 20
+shot kiln_screen
+book
+wait 20
+shot kiln_book
+book
+wait 5
+closegui
+wait 10
+useblock -1 -59 3
+wait 20
+shot fletching_screen
+closegui
+wait 10
+# Held items, plain and tinted
+item replace entity @s weapon.mainhand with minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":1}},nekomasfixed:armor_glint="nekomasfixed:red"]
+item replace entity @s weapon.offhand with minecraft:diamond_chestplate[minecraft:enchantments={levels:{"minecraft:protection":1}}]
+wait 10
+shot held_red
+item replace entity @s weapon.mainhand with minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":1}},nekomasfixed:armor_glint="nekomasfixed:lime"]
+wait 10
+shot held_lime
+item replace entity @s weapon.mainhand with minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":1}},nekomasfixed:armor_glint="nekomasfixed:sculk"]
+wait 10
+shot held_sculk
+item replace entity @s weapon.mainhand with minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":1}}]
+wait 10
+shot held_plain
+# Inventory slots
+item replace entity @s hotbar.1 with minecraft:diamond_chestplate[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:blue"]
+item replace entity @s hotbar.2 with minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":1}},nekomasfixed:armor_glint="nekomasfixed:red"]
+item replace entity @s hotbar.3 with nekomasfixed:rainbow_prism
+item replace entity @s hotbar.4 with nekomasfixed:quiver
+item replace entity @s hotbar.5 with nekomasfixed:quiver[nekomasfixed:quiver_contents=[{id:"minecraft:arrow",count:12},{id:"minecraft:spectral_arrow",count:3}]]
+item replace entity @s hotbar.6 with nekomasfixed:tipped_arrow_custom[nekomasfixed:tipped_potion_contents={potion_contents:[{potion:"minecraft:swiftness"},{potion:"minecraft:poison"}]}]
+item replace entity @s hotbar.7 with nekomasfixed:tipped_arrow_custom
+# Worn armor, tinted on the left player copy view
+item replace entity @s armor.head with minecraft:diamond_helmet[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:red"]
+item replace entity @s armor.chest with minecraft:diamond_chestplate[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:lime"]
+item replace entity @s armor.legs with minecraft:diamond_leggings[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:blue"]
+item replace entity @s armor.feet with minecraft:diamond_boots[minecraft:enchantments={levels:{"minecraft:protection":1}}]
+wait 10
+inventory
+wait 20
+shot inventory_glints
+closegui
+wait 5
+summon minecraft:armor_stand 2 -59 3 {Rotation:[180f,0f],ShowArms:1b,ArmorItems:[{id:"minecraft:diamond_boots",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:rainbow"}},{id:"minecraft:diamond_leggings",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:sculk"}},{id:"minecraft:diamond_chestplate",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:lime"}},{id:"minecraft:diamond_helmet",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:red"}}]}
+summon minecraft:armor_stand -2 -59 3 {Rotation:[180f,0f],ShowArms:1b,ArmorItems:[{id:"minecraft:diamond_boots",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}},{id:"minecraft:diamond_leggings",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}},{id:"minecraft:diamond_chestplate",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}},{id:"minecraft:diamond_helmet",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}}]}
+tp @s 0 -59 -1 0 0
+wait 20
+hud off
+shot armor_stands
+hud on
+# Quiver tooltips and tipped arrow tooltip
+item replace entity @s weapon.mainhand with nekomasfixed:quiver
+tooltip on
+wait 10
+shot tooltip_quiver_empty
+item replace entity @s weapon.mainhand with nekomasfixed:quiver[nekomasfixed:quiver_contents=[{id:"minecraft:arrow",count:12},{id:"minecraft:spectral_arrow",count:3},{id:"nekomasfixed:tipped_arrow_custom",count:5,components:{"nekomasfixed:tipped_potion_contents":{potion_contents:[{potion:"minecraft:swiftness"},{potion:"minecraft:poison"}]}}}]]
+wait 10
+shot tooltip_quiver_arrows
+item replace entity @s weapon.mainhand with nekomasfixed:tipped_arrow_custom[nekomasfixed:tipped_potion_contents={potion_contents:[{potion:"minecraft:swiftness"},{potion:"minecraft:poison"}]}]
+wait 10
+shot tooltip_arrow
+item replace entity @s weapon.mainhand with minecraft:diamond_chestplate[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:lime"]
+wait 10
+shot tooltip_glint
+tooltip off
+# A tipped arrow that lands: the custom arrow entity and the clouds
+summon nekomasfixed:custom_arrow 0 -55 4
+wait 30
+report kiln quiver glint done

@@ -10,6 +10,7 @@ displayName="${mod_name}"
 logoFile="assets/nekomasfixed/icon.png"
 authors="${mod_authors}"
 description='''${mod_description}'''
+enumExtensions="META-INF/enumextensions.json"
 
 [[mixins]]
 config="nekomasfixed.mixins.json"

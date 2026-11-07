@@ -1,6 +1,7 @@
 package net.greenjab.nekomasfixed;
 
 import net.greenjab.nekomasfixed.mixin.client.ItemPropertiesAccessor;
+import net.greenjab.nekomasfixed.registries.KilnQuiverGlintClient;
 import net.greenjab.nekomasfixed.registries.ModBlockEntityRendererRegistry;
 import net.greenjab.nekomasfixed.registries.ModEntityRendererRegistry;
 import net.greenjab.nekomasfixed.registry.registries.BlockRegistry;
@@ -26,6 +27,7 @@ public class NekomasFixedClient {
         modBus.addListener(NekomasFixedClient::onRegisterMenuScreens);
         modBus.addListener(NekomasFixedClient::onRegisterLayers);
         modBus.addListener(NekomasFixedClient::onRegisterRenderers);
+        KilnQuiverGlintClient.register(modBus);
     }
 
     private static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {

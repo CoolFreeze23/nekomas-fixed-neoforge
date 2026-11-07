@@ -54,6 +54,7 @@ public class NekomasFixed {
         modBus.addListener(BlockEntityRegistry::attachBlockEntities);
         modBus.addListener(EntityTypeRegistry::registerAttributes);
         modBus.addListener(EntityTypeRegistry::registerSpawnPlacements);
+        modBus.addListener(GlintColorRegistry::registerGlintColors);
         NeoForge.EVENT_BUS.addListener(GlowingDecoratedPotPatternRegistry::onUseBlock);
         NeoForge.EVENT_BUS.addListener(LootTableModifierRegistry::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener(BlockRegistry::onToolModification);
@@ -83,6 +84,9 @@ public class NekomasFixed {
         BlockRegistry.registerBlocks();
         CauldronBehaviour.register();
         ItemRegistry.registerItems();
+        KilnRegistry.register();
+        ArcheryRegistry.register();
+        GlintRegistry.register();
         ScreenHandlerRegistry.registerScreenHandlers();
         EntityTypeRegistry.registerEntityType();
         BlockEntityTypeRegistry.registerBlockEntityTypes();

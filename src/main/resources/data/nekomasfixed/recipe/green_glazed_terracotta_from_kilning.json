@@ -1,0 +1,13 @@
+{
+  "type": "nekomasfixed:kilning",
+  "category": "blocks",
+  "ingredient": {
+    "item": "minecraft:green_terracotta"
+  },
+  "result": {
+    "id": "minecraft:green_glazed_terracotta",
+    "count": 1
+  },
+  "experience": 0.4,
+  "cookingtime": 100
+}

@@ -1,0 +1,25 @@
+package net.greenjab.nekomasfixed.registry.other;
+
+import com.mojang.serialization.Codec;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipProvider;
+
+import java.util.function.Consumer;
+
+public record ArmorGlint(Holder<GlintColor> color) implements TooltipProvider {
+    public static final Codec<ArmorGlint> CODEC = GlintColor.CODEC.xmap(ArmorGlint::new, ArmorGlint::color);
+    public static final StreamCodec<RegistryFriendlyByteBuf, ArmorGlint> STREAM_CODEC = GlintColor.STREAM_CODEC.map(ArmorGlint::new, ArmorGlint::color);
+
+    @Override
+    public void addToTooltip(Item.TooltipContext context, Consumer<Component> consumer, TooltipFlag flag) {
+        consumer.accept(Component.translatable("tooltip_component.nekomasfixed.glint").withStyle(ChatFormatting.GRAY));
+        consumer.accept(CommonComponents.space().append(this.color.value().description()));
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "nekomasfixed:item/quiver"
+  },
+  "overrides": [
+    {
+      "predicate": { "nekomasfixed:empty": 1 },
+      "model": "nekomasfixed:item/quiver_empty"
+    }
+  ]
+}
