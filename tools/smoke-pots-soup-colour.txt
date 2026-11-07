@@ -6,17 +6,17 @@ gamerule doFireTick false
 fill -30 -60 -6 30 -60 40 minecraft:smooth_stone
 fill -30 -59 -6 30 -50 40 minecraft:air
 # pots, seen from the north
-setblock -5 -59 4 minecraft:decorated_pot[horizontal_facing=south]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"]}
-setblock -4 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]
-setblock -3 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"]}
-setblock -2 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],engraved:["minecraft:air","minecraft:air","minecraft:air","minecraft:gold_ingot"]}
-setblock -1 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:skull_pottery_sherd"],engraved:["minecraft:air","minecraft:air","minecraft:air","minecraft:diamond"]}
-setblock 0 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{pot_face:{block:{Name:"minecraft:light_blue_glazed_terracotta"}}}
-setblock 1 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],pot_face:{block:{Name:"minecraft:light_blue_glazed_terracotta"}}}
-setblock 2 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{pot_face:{block:{Name:"minecraft:orange_terracotta"}}}
-setblock 3 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{pot_face:{block:{Name:"nekomasfixed:indigo_glazed_terracotta"}}}
-setblock 4 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:heart_pottery_sherd"],"nekomasfixed.sherd_glow_overrides":[B;0B,0B,0B,1B]}
-setblock 5 -59 4 nekomasfixed:terracotta_decorated_pot[horizontal_facing=east]{sherds:["minecraft:skull_pottery_sherd","minecraft:miner_pottery_sherd","minecraft:prize_pottery_sherd","minecraft:blade_pottery_sherd"]}
+setblock -5 -59 4 minecraft:decorated_pot[facing=south]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"]}
+setblock -4 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]
+setblock -3 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"]}
+setblock -2 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],engraved:["minecraft:air","minecraft:air","minecraft:air","minecraft:gold_ingot"]}
+setblock -1 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:skull_pottery_sherd"],engraved:["minecraft:air","minecraft:air","minecraft:air","minecraft:diamond"]}
+setblock 0 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{pot_face:{block:{Name:"minecraft:light_blue_glazed_terracotta"}}}
+setblock 1 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],pot_face:{block:{Name:"minecraft:light_blue_glazed_terracotta"}}}
+setblock 2 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{pot_face:{block:{Name:"minecraft:orange_terracotta"}}}
+setblock 3 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{pot_face:{block:{Name:"nekomasfixed:indigo_glazed_terracotta"}}}
+setblock 4 -59 4 nekomasfixed:terracotta_decorated_pot[facing=north]{sherds:["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:heart_pottery_sherd"],"nekomasfixed.sherd_glow_overrides":[B;0B,0B,0B,1B]}
+setblock 5 -59 4 nekomasfixed:terracotta_decorated_pot[facing=east]{sherds:["minecraft:skull_pottery_sherd","minecraft:miner_pottery_sherd","minecraft:prize_pottery_sherd","minecraft:blade_pottery_sherd"]}
 item replace entity @s hotbar.0 with nekomasfixed:terracotta_decorated_pot[minecraft:pot_decorations=["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],minecraft:pot_face_block={block:{Name:"minecraft:light_blue_glazed_terracotta"}}]
 item replace entity @s hotbar.1 with nekomasfixed:terracotta_decorated_pot[minecraft:pot_decorations=["minecraft:brick","minecraft:brick","minecraft:brick","minecraft:blade_pottery_sherd"],minecraft:pot_engraved_decorations=["minecraft:air","minecraft:air","minecraft:air","minecraft:gold_ingot"]]
 item replace entity @s hotbar.2 with nekomasfixed:amber_dyed_brush
@@ -26,13 +26,21 @@ item replace entity @s hotbar.5 with nekomasfixed:sulfur_torch
 item replace entity @s hotbar.6 with nekomasfixed:sulfur_lantern
 item replace entity @s hotbar.7 with nekomasfixed:sulfur_campfire
 item replace entity @s hotbar.8 with nekomasfixed:gold_chain
-tp @s 0 -59 0 0 15
+tp @s 0 -59 0 0 18
 summon minecraft:item_frame -1 -57 8 {Facing:2b,Item:{id:"nekomasfixed:terracotta_decorated_pot",count:1}}
 fill -3 -59 9 3 -56 9 minecraft:stone
 setblock -1 -57 9 minecraft:stone
 wait 60
 hud on
 shot pots
+time set midnight
+wait 40
+hud off
+shot pots_night
+time set noon
+tp @s 3 -59 1 -45 18
+wait 40
+shot pots_turned
 # soup states: water cauldron, soup with ingredients, stirred soup, side by side over campfires
 setblock -3 -59 16 minecraft:campfire
 setblock -3 -58 16 minecraft:water_cauldron[level=3]
@@ -42,7 +50,8 @@ setblock 1 -59 16 minecraft:campfire
 setblock 1 -58 16 nekomasfixed:soup_cauldron{HasStirred:1b,inputs:[{id:"minecraft:apple",count:1},{id:"minecraft:carrot",count:1},{id:"minecraft:cooked_beef",count:1}]}
 setblock 3 -59 16 minecraft:campfire
 setblock 3 -58 16 nekomasfixed:soup_cauldron{HasStirred:1b,inputs:[{id:"minecraft:apple",count:1},{id:"minecraft:beetroot",count:1}]}
-tp @s 0 -56 12 0 30
+setblock 0 -57 12 minecraft:glass
+tp @s 0 -56 12 0 25
 wait 80
 hud off
 shot soup
