@@ -9,6 +9,7 @@ import net.greenjab.nekomasfixed.util.EchoingLayer;
 import net.greenjab.nekomasfixed.util.GlobalVariables;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -50,13 +51,13 @@ public abstract class HumanoidArmorLayerMixin<T extends LivingEntity, M extends 
     }
 
     @Redirect(
-            method = "renderArmorPiece",
+            method = "renderArmorPiece(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;ILnet/minecraft/client/model/HumanoidModel;FFFFFF)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/renderer/entity/layers/HumanoidArmorLayer;renderTrim(Lnet/minecraft/core/Holder;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/item/armortrim/ArmorTrim;Lnet/minecraft/client/model/HumanoidModel;Z)V"
+                    target = "Lnet/minecraft/client/renderer/entity/layers/HumanoidArmorLayer;renderTrim(Lnet/minecraft/core/Holder;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/item/armortrim/ArmorTrim;Lnet/minecraft/client/model/Model;Z)V"
             )
     )
-    private void injected(HumanoidArmorLayer<?, ?, ?> instance, Holder<ArmorMaterial> armorMaterial, PoseStack matrices, MultiBufferSource vertexConsumers, int light, ArmorTrim trim, A model, boolean leggings, @Local ItemStack stack, @Local boolean bl) {
+    private void injected(HumanoidArmorLayer<?, ?, ?> instance, Holder<ArmorMaterial> armorMaterial, PoseStack matrices, MultiBufferSource vertexConsumers, int light, ArmorTrim trim, Model model, boolean leggings, @Local ItemStack stack, @Local boolean bl) {
         Item item = stack.getItem();
         if (item instanceof ArmorItem armorItem) {
             Player player = Minecraft.getInstance().player;
@@ -82,7 +83,7 @@ public abstract class HumanoidArmorLayerMixin<T extends LivingEntity, M extends 
     }
 
     @Redirect(
-            method = "renderModel",
+            method = "renderModel(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/model/Model;ILnet/minecraft/resources/ResourceLocation;)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/renderer/RenderType;armorCutoutNoCull(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/client/renderer/RenderType;"
@@ -93,7 +94,7 @@ public abstract class HumanoidArmorLayerMixin<T extends LivingEntity, M extends 
     }
 
     @Unique
-    private void nekomasfixed$renderTrim(Holder<ArmorMaterial> material, PoseStack matrices, MultiBufferSource vertexConsumers, int light, float alpha, ArmorTrim base, @Nullable EchoingKeyframe keyframe, A model, boolean leggings) {
+    private void nekomasfixed$renderTrim(Holder<ArmorMaterial> material, PoseStack matrices, MultiBufferSource vertexConsumers, int light, float alpha, ArmorTrim base, @Nullable EchoingKeyframe keyframe, Model model, boolean leggings) {
         ArmorTrim trim;
         if (keyframe != null) {
             if (keyframe.hidden()) {

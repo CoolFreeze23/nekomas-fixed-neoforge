@@ -37,17 +37,26 @@ sourceSets {
         compileClasspath += sourceSets.main.output
         runtimeClasspath += sourceSets.main.output
     }
+    // Dev-only hidden client that drives itself: tools/smoke.sh
+    smoke {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
 }
 configurations {
     gametestImplementation.extendsFrom implementation
     gametestCompileOnly.extendsFrom compileOnly
     gametestRuntimeOnly.extendsFrom runtimeOnly
+    smokeImplementation.extendsFrom implementation
+    smokeCompileOnly.extendsFrom compileOnly
+    smokeRuntimeOnly.extendsFrom runtimeOnly
 }
 
 neoForge {
     version = project.neo_version
 
     addModdingDependenciesTo(sourceSets.gametest)
+    addModdingDependenciesTo(sourceSets.smoke)
 
     parchment {
         mappingsVersion = project.parchment_mappings_version
@@ -69,6 +78,14 @@ neoForge {
             sourceSet = sourceSets.gametest
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
+        smokeClient {
+            client()
+            sourceSet = sourceSets.smoke
+            gameDirectory = project.file('run-smoke')
+            programArguments.addAll('--username', 'Dev', '--width', '1280', '--height', '720', '--fml.mixin.config', 'nekomasfixed.smoke.mixins.json')
+            systemProperty 'nekoma.smoke', 'true'
+            jvmArgument '-Xmx3G'
+        }
         configureEach {
             logLevel = org.slf4j.event.Level.INFO
         }
@@ -78,6 +95,7 @@ neoForge {
         "${mod_id}" {
             sourceSet(sourceSets.main)
             sourceSet(sourceSets.gametest)
+            sourceSet(sourceSets.smoke)
         }
     }
 }

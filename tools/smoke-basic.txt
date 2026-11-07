@@ -1,0 +1,31 @@
+# A gallery of the mod's content on the flat world
+time set noon
+gamerule doMobSpawning false
+gamerule doDaylightCycle false
+tp @s 0 -59 0 0 0
+fill -30 -60 -2 30 -60 30 minecraft:smooth_stone
+setblock 0 -59 4 nekomasfixed:glow_torch
+setblock 1 -59 4 nekomasfixed:redstone_striker
+setblock 2 -59 4 nekomasfixed:pyrotechnics_table
+setblock 3 -59 4 nekomasfixed:corrupted_beacon
+setblock 4 -59 4 nekomasfixed:geyser
+setblock 5 -59 4 minecraft:melon
+setblock 6 -59 4 nekomasfixed:glistering_melon
+setblock -1 -59 4 nekomasfixed:clam
+setblock -2 -59 4 nekomasfixed:enderman_head
+setblock -3 -59 4 minecraft:clock
+setblock -4 -59 4 nekomasfixed:hollow_oak_log
+setblock -5 -59 4 nekomasfixed:baobab_log
+setblock -6 -59 4 nekomasfixed:amber_bed
+setblock -7 -59 4 nekomasfixed:aqua_shulker_box
+summon nekomasfixed:moobloom 0 -59 8
+summon nekomasfixed:target_dummy 3 -59 8
+summon nekomasfixed:derelict -3 -59 8 {NoAI:1b}
+summon nekomasfixed:drenched -6 -59 8 {NoAI:1b}
+summon nekomasfixed:rime 6 -59 8 {NoAI:1b}
+summon nekomasfixed:suspicious_spider 9 -59 8 {NoAI:1b}
+summon nekomasfixed:baobab_boat -9 -59 8
+wait 60
+hud off
+shot gallery
+report gallery done
