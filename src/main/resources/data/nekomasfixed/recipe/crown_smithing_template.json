@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "nekomasfixed:crown_smithing_template"
+    }
+  },
+  "result": {
+    "id": "nekomasfixed:crown_smithing_template",
+    "count": 2
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "flower_crown",
+  "key": {
+    "#": {
+      "item": "minecraft:poppy"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "id": "nekomasfixed:poppy_flower_crown"
+  }
+}

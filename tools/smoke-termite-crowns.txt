@@ -1,0 +1,69 @@
+# Termites, hive, flower crowns, metal crowns, horned helmets and the jewel trim on the flat world
+time set noon
+gamerule doMobSpawning false
+gamerule doDaylightCycle false
+tp @s 0 -59 0 0 0
+fill -30 -60 -2 30 -60 30 minecraft:smooth_stone
+# Blocks
+setblock -4 -59 3 nekomasfixed:termite_hive
+setblock -3 -59 3 nekomasfixed:termite_hive[termites=1]
+setblock -2 -59 3 nekomasfixed:termite_block
+setblock 2 -59 3 minecraft:stone
+setblock 2 -59 2 nekomasfixed:horn[facing=south,torch=normal_torch]
+# Termites standing still for the camera
+summon nekomasfixed:termite -1 -59 3 {NoAI:1b,Rotation:[180f,0f]}
+summon nekomasfixed:termite 0 -59 3 {NoAI:1b,Rotation:[135f,0f]}
+# Armor stands facing the camera, the row in front wears crowns, the row behind horned helmets
+summon minecraft:armor_stand -4 -59 6 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:poppy_flower_crown",count:1}]}
+summon minecraft:armor_stand -2 -59 6 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:dandelion_flower_crown",count:1}]}
+summon minecraft:armor_stand 0 -59 6 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:golden_crown",count:1}]}
+summon minecraft:armor_stand 2 -59 6 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:copper_crown",count:1}]}
+summon minecraft:armor_stand 4 -59 6 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:netherite_crown",count:1,components:{"minecraft:trim":{pattern:"nekomasfixed:jewel",material:"minecraft:diamond"}}}]}
+summon minecraft:armor_stand -4 -59 9 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:goat_horn_iron_helmet",count:1}]}
+summon minecraft:armor_stand -2 -59 9 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:goat_horn_golden_helmet",count:1}]}
+summon minecraft:armor_stand 0 -59 9 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:goat_horn_diamond_helmet",count:1,components:{"minecraft:trim":{pattern:"minecraft:coast",material:"minecraft:gold"}}}]}
+summon minecraft:armor_stand 2 -59 9 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:goat_horn_netherite_helmet",count:1}]}
+summon minecraft:armor_stand 4 -59 9 {Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:goat_horn_turtle_helmet",count:1}]}
+# Jewel on full armour, and a zombie wearing a flower crown
+summon minecraft:armor_stand 7 -59 6 {Rotation:[180f,0f],ArmorItems:[{},{},{id:"minecraft:iron_chestplate",count:1,components:{"minecraft:trim":{pattern:"nekomasfixed:jewel",material:"minecraft:redstone"}}},{id:"nekomasfixed:iron_crown",count:1}]}
+summon minecraft:zombie -7 -59 6 {NoAI:1b,Rotation:[180f,0f],ArmorItems:[{},{},{},{id:"nekomasfixed:wither_rose_flower_crown",count:1}]}
+wait 60
+hud off
+shot termite_gallery
+tp @s 0 -58.2 2.2 0 40
+wait 30
+shot termites_close
+tp @s 0 -58 4.5 0 10
+wait 30
+shot crowns_close
+tp @s 0 -58 7.2 0 10
+wait 30
+shot helmets_close
+tp @s 5.5 -58 4 20 15
+wait 30
+shot jewel_close
+# The player wearing one, seen from outside
+tp @s 0 -59 14 180 0
+item replace entity @s armor.head with nekomasfixed:goat_horn_iron_helmet
+view 2
+wait 30
+shot player_horns
+item replace entity @s armor.head with nekomasfixed:poppy_flower_crown
+wait 30
+shot player_flower_crown
+item replace entity @s armor.head with nekomasfixed:diamond_crown
+wait 30
+shot player_crown
+view 0
+hud on
+give @s nekomasfixed:termite_spawn_egg
+give @s nekomasfixed:termite_hive
+give @s nekomasfixed:termite_block
+give @s nekomasfixed:poppy_flower_crown
+give @s nekomasfixed:golden_crown
+give @s nekomasfixed:goat_horn_iron_helmet
+give @s nekomasfixed:crown_smithing_template
+give @s nekomasfixed:jewel_armor_trim_smithing_template
+wait 20
+shot hotbar
+report termite crowns done

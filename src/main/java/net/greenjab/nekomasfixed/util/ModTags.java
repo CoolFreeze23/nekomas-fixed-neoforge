@@ -51,6 +51,10 @@ public class ModTags {
     public static final TagKey<Item> SPOTTED_CARPET_ITEM = itemTag("spotted_carpet");
     public static final TagKey<Item> FROGLIGHTS_ITEM = itemTag("froglights");
 
+    public static final TagKey<Block> TORCHES = blockTag("torches");
+    public static final TagKey<Item> FLOWER_CROWNS = itemTag("flower_crowns");
+    public static final TagKey<Item> GOAT_HORN_HELMETS = itemTag("goat_horn_helmets");
+
     private static TagKey<Block> blockTag(String path) {
         return TagKey.create(Registries.BLOCK, NekomasFixed.id(path));
     }
