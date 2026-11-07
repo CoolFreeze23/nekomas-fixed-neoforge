@@ -61,7 +61,7 @@ public class PlayerMixin {
 
     // Turtle Knee Pads: mining speed is not reduced underwater (restores the
     // onGround branch of getDestroySpeed while eye-in-water wearing the leggings).
-    @ModifyExpressionValue(method = "getDestroySpeed", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;onGround()Z"))
+    @ModifyExpressionValue(method = "getDigSpeed", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;onGround()Z"))
     private boolean turtleLeggingsMining(boolean original) {
         Player PE = (Player) (Object) this;
         if (PE.isEyeInFluid(FluidTags.WATER)) {

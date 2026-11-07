@@ -1,8 +1,6 @@
 package net.greenjab.nekomasfixed.mixin;
 
-import net.greenjab.nekomasfixed.mixin.accessor.BlockBehaviourAccessor;
 import net.greenjab.nekomasfixed.registry.block.MelonBlock;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -14,19 +12,17 @@ import org.spongepowered.asm.mixin.injection.Slice;
 
 @Mixin(Blocks.class)
 public class BlocksMixin {
+    // NeoForge refuses a second registration under one key, so minecraft:melon is built as a
+    // MelonBlock in the first place instead of being replaced afterwards.
     @Redirect(
             method = "<clinit>",
             at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/level/block/Blocks;register(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/world/level/block/Block;",
+                    value = "NEW",
+                    target = "(Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)Lnet/minecraft/world/level/block/Block;",
                     ordinal = 0
             ),
             slice = @Slice(
-                    from = @At(
-                            value = "FIELD",
-                            target = "Lnet/minecraft/references/Blocks;MELON:Lnet/minecraft/resources/ResourceKey;",
-                            opcode = Opcodes.GETSTATIC
-                    ),
+                    from = @At(value = "CONSTANT", args = "stringValue=melon"),
                     to = @At(
                             value = "FIELD",
                             target = "Lnet/minecraft/world/level/block/Blocks;MELON:Lnet/minecraft/world/level/block/Block;",
@@ -34,9 +30,7 @@ public class BlocksMixin {
                     )
             )
     )
-    private static Block registerMelon(ResourceKey<Block> key, Block vanilla) {
-        Blocks.register(key, vanilla);
-        BlockBehaviour.Properties properties = ((BlockBehaviourAccessor) vanilla).getProperties();
-        return Blocks.register(key, new MelonBlock(false, properties));
+    private static Block registerMelon(BlockBehaviour.Properties properties) {
+        return new MelonBlock(false, properties);
     }
 }
