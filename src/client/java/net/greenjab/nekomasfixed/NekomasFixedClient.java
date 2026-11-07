@@ -12,7 +12,10 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.Sheets;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.greenjab.nekomasfixed.render.tab.screens.InGameEditScreen;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -21,7 +24,8 @@ import net.minecraft.client.renderer.RenderType;
 @Mod(value = NekomasFixed.NAMESPACE, dist = Dist.CLIENT)
 public class NekomasFixedClient {
 
-    public NekomasFixedClient(IEventBus modBus) {
+    public NekomasFixedClient(IEventBus modBus, ModContainer container) {
+        container.registerExtensionPoint(IConfigScreenFactory.class, (modContainer, parent) -> new InGameEditScreen(parent));
         modBus.addListener(NekomasFixedClient::onClientSetup);
         modBus.addListener(NekomasFixedClient::onRegisterMenuScreens);
         modBus.addListener(NekomasFixedClient::onRegisterLayers);

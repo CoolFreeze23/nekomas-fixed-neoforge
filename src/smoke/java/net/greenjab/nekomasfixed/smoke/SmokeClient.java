@@ -39,7 +39,7 @@ import java.util.function.Function;
 /**
  * Dev-only client check that runs by itself in a hidden window. It creates a flat creative world,
  * reports missing block and item models and names, then plays a script file:
- * a line is a server command, or "wait N", "shot NAME", "hud on|off", "view 0|1|2", or "report TEXT".
+ * a line is a server command, or "wait N", "shot NAME", "hud on|off", "view 0|1|2", "screen NAME|none", or "report TEXT".
  */
 @Mod(value = NekomasFixed.NAMESPACE, dist = Dist.CLIENT)
 public class SmokeClient {
@@ -126,6 +126,17 @@ public class SmokeClient {
             case "hud" -> mc.options.hideGui = !parts[1].equals("on");
             case "view" -> mc.options.setCameraType(net.minecraft.client.CameraType.values()[Integer.parseInt(parts[1])]);
             case "report" -> report.add(parts[1]);
+            case "screen" -> mc.setScreen(switch (parts[1]) {
+                case "menu" -> new net.greenjab.nekomasfixed.render.tab.screens.InGameEditScreen(null);
+                case "worldgen" -> net.greenjab.nekomasfixed.render.tab.screens.ConfigScreens.worldGen(null);
+                case "nether" -> net.greenjab.nekomasfixed.render.tab.screens.ConfigScreens.nether(null);
+                case "entity" -> net.greenjab.nekomasfixed.render.tab.screens.ConfigScreens.entity(null);
+                case "item" -> net.greenjab.nekomasfixed.render.tab.screens.ConfigScreens.item(null);
+                case "blocks" -> net.greenjab.nekomasfixed.render.tab.screens.ConfigScreens.blocks(null);
+                case "credits" -> net.greenjab.nekomasfixed.render.tab.screens.ConfigScreens.credits(null);
+                case "pause" -> new net.minecraft.client.gui.screens.PauseScreen(true);
+                default -> null;
+            });
             default -> {
                 var server = mc.getSingleplayerServer();
                 String command = line.startsWith("/") ? line.substring(1) : line;
