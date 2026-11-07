@@ -16,7 +16,7 @@ public enum GoatHornTorchType implements StringRepresentable {
     GLOW_TORCH_OFF(null, 0),
     SOUL_TORCH(ParticleTypes.SOUL_FIRE_FLAME, 10),
     REDSTONE_TORCH(DustParticleOptions.REDSTONE, 15),
-    SULFUR_TORCH(SulfurRegistry.NOXIOUS_GAS, 14),
+    SULFUR_TORCH(null, 14),
     NONE(null, 0);
 
     private final int light;
@@ -41,7 +41,8 @@ public enum GoatHornTorchType implements StringRepresentable {
     }
 
     public ParticleOptions getParticle() {
-        return this.particle;
+        // Looked up late: this enum loads with the vanilla blocks, before the sulfur content registers.
+        return this == SULFUR_TORCH ? SulfurRegistry.NOXIOUS_GAS : this.particle;
     }
 
     @Override
