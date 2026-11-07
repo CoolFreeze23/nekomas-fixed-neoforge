@@ -34,11 +34,13 @@ public class NekomasFixedClient {
 
     private static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         ModEntityRendererRegistry.registerLayers(event);
+        net.greenjab.nekomasfixed.registries.ModBoatRenderers.registerLayers(event);
         ModBlockEntityRendererRegistry.registerLayers(event);
     }
 
     private static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         ModEntityRendererRegistry.registerRenderers(event);
+        net.greenjab.nekomasfixed.registries.ModBoatRenderers.registerRenderers(event);
         ModBlockEntityRendererRegistry.registerRenderers(event);
     }
 

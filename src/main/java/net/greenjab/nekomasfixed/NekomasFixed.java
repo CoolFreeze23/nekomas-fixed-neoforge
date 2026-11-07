@@ -57,6 +57,8 @@ public class NekomasFixed {
         NeoForge.EVENT_BUS.addListener(GlowingDecoratedPotPatternRegistry::onUseBlock);
         NeoForge.EVENT_BUS.addListener(LootTableModifierRegistry::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener(BlockRegistry::onToolModification);
+        modBus.addListener(BoatRegistry::modifyDefaultComponents);
+        NeoForge.EVENT_BUS.addListener(BoatRegistry::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener((ServerAboutToStartEvent event) ->
                 ModConfigValues.onServerStarting(event.getServer().getWorldPath(LevelResource.ROOT)));
         NeoForge.EVENT_BUS.addListener((ServerStoppedEvent event) -> ModConfigValues.onServerStopped());
@@ -85,6 +87,7 @@ public class NekomasFixed {
         ItemRegistry.registerItems();
         ScreenHandlerRegistry.registerScreenHandlers();
         EntityTypeRegistry.registerEntityType();
+        BoatRegistry.register();
         BlockEntityTypeRegistry.registerBlockEntityTypes();
         RecipeRegistry.registerRecipes();
         EnchantmentRegistry.registerEnchantments();
