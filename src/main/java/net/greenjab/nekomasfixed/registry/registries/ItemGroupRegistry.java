@@ -7,8 +7,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemGroupRegistry {
+
+    /** Items that feature registries add to the tabs below, in the order they register. */
+    public static final List<ItemLike> MAIN_EXTRAS = new ArrayList<>();
+    public static final List<ItemLike> COLOUR_EXTRAS = new ArrayList<>();
 
     public static final ResourceKey<CreativeModeTab> NEKOMASFIXED_KEY =
             ResourceKey.create(net.minecraft.core.registries.Registries.CREATIVE_MODE_TAB,
@@ -111,6 +119,7 @@ public class ItemGroupRegistry {
                         entries.accept(ItemRegistry.HOLLOW_STRIPPED_CRIMSON_STEM);
                         entries.accept(ItemRegistry.HOLLOW_STRIPPED_WARPED_STEM);
                         entries.accept(ItemRegistry.HOLLOW_STRIPPED_BAOBAB_LOG);
+                        MAIN_EXTRAS.forEach(entries::accept);
                     })
                     .build()
     );
@@ -311,6 +320,7 @@ public class ItemGroupRegistry {
                         entries.accept(ItemRegistry.AQUA_GLAZED_TERRACOTTA);
                         entries.accept(ItemRegistry.INDIGO_GLAZED_TERRACOTTA);
                         entries.accept(ItemRegistry.MAROON_GLAZED_TERRACOTTA);
+                        COLOUR_EXTRAS.forEach(entries::accept);
                     })
                     .build()
     );

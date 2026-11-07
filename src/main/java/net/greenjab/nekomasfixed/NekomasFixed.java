@@ -4,7 +4,11 @@ import net.greenjab.nekomasfixed.network.SyncHandler;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
+import net.greenjab.nekomasfixed.screen.config.ModConfigValues;
+import net.minecraft.world.level.storage.LevelResource;
 import net.minecraft.core.registries.Registries;
 import net.greenjab.nekomasfixed.registry.block.cauldron.CauldronBehaviour;
 import net.greenjab.nekomasfixed.registry.registries.*;
@@ -53,6 +57,9 @@ public class NekomasFixed {
         NeoForge.EVENT_BUS.addListener(GlowingDecoratedPotPatternRegistry::onUseBlock);
         NeoForge.EVENT_BUS.addListener(LootTableModifierRegistry::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener(BlockRegistry::onToolModification);
+        NeoForge.EVENT_BUS.addListener((ServerAboutToStartEvent event) ->
+                ModConfigValues.onServerStarting(event.getServer().getWorldPath(LevelResource.ROOT)));
+        NeoForge.EVENT_BUS.addListener((ServerStoppedEvent event) -> ModConfigValues.onServerStopped());
     }
 
     /**
