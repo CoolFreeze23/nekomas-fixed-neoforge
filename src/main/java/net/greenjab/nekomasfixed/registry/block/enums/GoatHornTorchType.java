@@ -1,6 +1,7 @@
 package net.greenjab.nekomasfixed.registry.block.enums;
 
 import net.greenjab.nekomasfixed.registry.registries.ItemRegistry;
+import net.greenjab.nekomasfixed.registry.registries.SulfurRegistry;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -15,6 +16,7 @@ public enum GoatHornTorchType implements StringRepresentable {
     GLOW_TORCH_OFF(null, 0),
     SOUL_TORCH(ParticleTypes.SOUL_FIRE_FLAME, 10),
     REDSTONE_TORCH(DustParticleOptions.REDSTONE, 15),
+    SULFUR_TORCH(SulfurRegistry.NOXIOUS_GAS, 14),
     NONE(null, 0);
 
     private final int light;
@@ -30,6 +32,7 @@ public enum GoatHornTorchType implements StringRepresentable {
         if (item == Items.SOUL_TORCH) return SOUL_TORCH;
         if (item == Items.REDSTONE_TORCH) return REDSTONE_TORCH;
         if (item == ItemRegistry.GLOW_TORCH) return waterLogged ? GLOW_TORCH : GLOW_TORCH_OFF;
+        if (item == SulfurRegistry.SULFUR_TORCH_ITEM) return SULFUR_TORCH;
         return NONE;
     }
 
@@ -50,6 +53,7 @@ public enum GoatHornTorchType implements StringRepresentable {
         if (this == NORMAL_TORCH) return Items.TORCH;
         if (this == SOUL_TORCH) return Items.SOUL_TORCH;
         if (this == REDSTONE_TORCH) return Items.REDSTONE_TORCH;
+        if (this == SULFUR_TORCH) return SulfurRegistry.SULFUR_TORCH_ITEM;
         if (this == GLOW_TORCH || this == GLOW_TORCH_OFF) return ItemRegistry.GLOW_TORCH;
         return Items.AIR;
     }
