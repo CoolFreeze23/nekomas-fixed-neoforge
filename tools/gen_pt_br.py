@@ -316,7 +316,7 @@ T.update({
     'item.nekomasfixed.wildfire_shield': 'Escudo do Fogaréu',
     'item.nekomasfixed.jewel_armor_trim_smithing_template.new': V['item.minecraft.smithing_template'],
     'item.nekomasfixed.jewel_armor_trim_smithing_template': 'Enfeite de Joias',
-    'trim_pattern.nekomasfixed:jewel': 'Enfeite de Joias',
+    'trim_pattern.nekomasfixed.jewel': 'Enfeite de Joias',
     'item.nekomasfixed.crown_smithing_template': 'Molde de Ferraria de Coroa',
     'item.nekomasfixed.helmets': 'Capacetes',
 

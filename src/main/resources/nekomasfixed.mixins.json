@@ -4,6 +4,12 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AbstractArrowMixin",
+    "AnimalTooltipItemStackMixin",
+    "FlowerCrownPlayerMixin",
+    "GoatHornEntityMixin",
+    "GoatHornItemMixin",
+    "InstrumentItemMixin",
+    "SmithingTemplateDamageMixin",
     "AnimalMixin",
     "BlockMixin",
     "DolphinMixin",

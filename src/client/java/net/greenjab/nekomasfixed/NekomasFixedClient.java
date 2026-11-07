@@ -3,6 +3,7 @@ package net.greenjab.nekomasfixed;
 import net.greenjab.nekomasfixed.mixin.client.ItemPropertiesAccessor;
 import net.greenjab.nekomasfixed.registries.ModBlockEntityRendererRegistry;
 import net.greenjab.nekomasfixed.registries.ModEntityRendererRegistry;
+import net.greenjab.nekomasfixed.registries.TermiteCrownClient;
 import net.greenjab.nekomasfixed.registry.registries.BlockRegistry;
 import net.greenjab.nekomasfixed.registry.registries.ClamStateProperty;
 import net.greenjab.nekomasfixed.registry.registries.ItemRegistry;
@@ -30,6 +31,8 @@ public class NekomasFixedClient {
         modBus.addListener(NekomasFixedClient::onRegisterMenuScreens);
         modBus.addListener(NekomasFixedClient::onRegisterLayers);
         modBus.addListener(NekomasFixedClient::onRegisterRenderers);
+        modBus.addListener(TermiteCrownClient::addLayers);
+        modBus.addListener(TermiteCrownClient::registerTooltips);
     }
 
     private static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
@@ -40,12 +43,14 @@ public class NekomasFixedClient {
         ModEntityRendererRegistry.registerLayers(event);
         net.greenjab.nekomasfixed.registries.ModBoatRenderers.registerLayers(event);
         ModBlockEntityRendererRegistry.registerLayers(event);
+        TermiteCrownClient.registerLayers(event);
     }
 
     private static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         ModEntityRendererRegistry.registerRenderers(event);
         net.greenjab.nekomasfixed.registries.ModBoatRenderers.registerRenderers(event);
         ModBlockEntityRendererRegistry.registerRenderers(event);
+        TermiteCrownClient.registerRenderers(event);
     }
 
     private static void onClientSetup(FMLClientSetupEvent event) {

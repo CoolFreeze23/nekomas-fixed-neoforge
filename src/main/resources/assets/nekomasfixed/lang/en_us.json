@@ -378,7 +378,6 @@
   "item.nekomasfixed.wildfire_shield": "Wildfire Shield",
   "item.nekomasfixed.jewel_armor_trim_smithing_template.new": "Smithing Template",
   "item.nekomasfixed.jewel_armor_trim_smithing_template": "Jewel Armor Trim",
-  "trim_pattern.nekomasfixed:jewel": "Jewel Armor Trim",
   "item.nekomasfixed.crown_smithing_template": "Crown Smithing Template",
   "item.nekomasfixed.helmets": "Helmets",
   "item.nekomasfixed.copper_crown": "Copper Crown",
@@ -689,5 +688,6 @@
   "advancements.nekomasfixed.flower_power.description": "Collect Every Flower Crown",
   "advancements.nekomasfixed.prismaniac.title": "Prismaniac",
   "advancements.nekomasfixed.prismaniac.description": "Collect every Prism Color",
-  "entity.minecraft.villager.nekomasfixed.pyrotechnist": "Pyrotechnist"
+  "entity.minecraft.villager.nekomasfixed.pyrotechnist": "Pyrotechnist",
+  "trim_pattern.nekomasfixed.jewel": "Jewel Armor Trim"
 }
