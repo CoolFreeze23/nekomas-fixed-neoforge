@@ -19,6 +19,9 @@
     "MinecraftMixin",
     "ItemPropertiesAccessor",
     "ItemRendererMixin",
+    "MinecartModelMixin",
+    "MinecartRendererMixin",
+    "MultiPlayerGameModeMixin",
     "SheepFurLayerMixin",
     "ShulkerBoxRendererMixin",
     "SignRendererMixin"

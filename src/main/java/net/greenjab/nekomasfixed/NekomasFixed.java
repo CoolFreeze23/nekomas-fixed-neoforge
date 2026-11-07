@@ -75,6 +75,8 @@ public class NekomasFixed {
                 event.setKnockbackVelocity(net.minecraft.world.phys.Vec3.ZERO);
             }
         });
+        modBus.addListener(BoatRegistry::modifyDefaultComponents);
+        NeoForge.EVENT_BUS.addListener(BoatRegistry::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener((ServerAboutToStartEvent event) ->
                 ModConfigValues.onServerStarting(event.getServer().getWorldPath(LevelResource.ROOT)));
         NeoForge.EVENT_BUS.addListener((ServerStoppedEvent event) -> ModConfigValues.onServerStopped());
@@ -117,6 +119,7 @@ public class NekomasFixed {
         ItemRegistry.registerItems();
         ScreenHandlerRegistry.registerScreenHandlers();
         EntityTypeRegistry.registerEntityType();
+        BoatRegistry.register();
         BlockEntityTypeRegistry.registerBlockEntityTypes();
         RecipeRegistry.registerRecipes();
         EnchantmentRegistry.registerEnchantments();

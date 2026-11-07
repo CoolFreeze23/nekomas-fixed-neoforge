@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:cherry_planks"
+  },
+  "base": {
+    "item": "nekomasfixed:big_cherry_boat"
+  },
+  "result": {
+    "id": "nekomasfixed:huge_cherry_boat"
+  },
+  "template": {
+    "item": "nekomasfixed:boat_upgrade_template"
+  }
+}

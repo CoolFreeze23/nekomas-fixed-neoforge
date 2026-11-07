@@ -1,0 +1,105 @@
+# Every wood in both sizes, ships with crew, chests and banners, minecarts
+time set noon
+gamerule doMobSpawning false
+gamerule doDaylightCycle false
+gamerule doPatrolSpawning false
+difficulty hard
+fill -24 -61 0 24 -60 60 minecraft:water
+fill -2 -50 -8 2 -50 -4 minecraft:barrier
+tp @s 0 -49 -6 0 40
+wait 20
+summon nekomasfixed:big_oak_boat -13.5 -59 8
+summon nekomasfixed:big_spruce_boat -10.5 -59 8
+summon nekomasfixed:big_birch_boat -7.5 -59 8
+summon nekomasfixed:big_jungle_boat -4.5 -59 8
+summon nekomasfixed:big_acacia_boat -1.5 -59 8
+summon nekomasfixed:big_dark_oak_boat 1.5 -59 8
+summon nekomasfixed:big_mangrove_boat 4.5 -59 8
+summon nekomasfixed:big_cherry_boat 7.5 -59 8
+summon nekomasfixed:big_bamboo_boat 10.5 -59 8
+summon nekomasfixed:big_baobab_boat 13.5 -59 8
+summon nekomasfixed:huge_oak_boat -15.75 -59 18
+summon nekomasfixed:huge_spruce_boat -12.25 -59 18
+summon nekomasfixed:huge_birch_boat -8.75 -59 18
+summon nekomasfixed:huge_jungle_boat -5.25 -59 18
+summon nekomasfixed:huge_acacia_boat -1.75 -59 18
+summon nekomasfixed:huge_dark_oak_boat 1.75 -59 18
+summon nekomasfixed:huge_mangrove_boat 5.25 -59 18
+summon nekomasfixed:huge_cherry_boat 8.75 -59 18
+summon nekomasfixed:huge_bamboo_boat 12.25 -59 18
+summon nekomasfixed:huge_baobab_boat 15.75 -59 18
+wait 40
+hud off
+shot woods_all
+tp @s -8 -49 -2 0 50
+fill -10 -50 -4 -6 -50 0 minecraft:barrier
+wait 10
+shot big_left
+tp @s 8 -49 -2 0 50
+fill 6 -50 -4 10 -50 0 minecraft:barrier
+wait 10
+shot big_right
+fill -11 -50 8 -7 -50 12 minecraft:barrier
+tp @s -9 -49 10 0 55
+wait 10
+shot huge_left
+fill 7 -50 8 11 -50 12 minecraft:barrier
+tp @s 9 -49 10 0 55
+wait 10
+shot huge_right
+summon nekomasfixed:big_oak_boat -8 -59 36 {Banner:{id:"minecraft:red_banner",count:1},Passengers:[{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b}]}
+summon nekomasfixed:big_spruce_boat -3 -59 36 {Chest:1b,Banner:{id:"minecraft:blue_banner",count:1},Passengers:[{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b}]}
+summon nekomasfixed:huge_birch_boat 3 -59 36 {Banner:{id:"minecraft:yellow_banner",count:1},Passengers:[{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b}]}
+summon nekomasfixed:huge_cherry_boat 9 -59 36 {Chest:1b,Banner:{id:"minecraft:lime_banner",count:1},Passengers:[{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b},{id:"minecraft:villager",NoAI:1b}]}
+summon nekomasfixed:big_jungle_boat -8 -59 46 {Rotation:[90f,0f],Passengers:[{id:"minecraft:sheep",NoAI:1b},{id:"minecraft:sheep",NoAI:1b},{id:"minecraft:sheep",NoAI:1b}]}
+fill -2 -55 24 2 -55 28 minecraft:barrier
+tp @s 0 -54 26 0 25
+wait 40
+shot crew_front
+fill 18 -57 34 22 -57 38 minecraft:barrier
+tp @s 20 -56 36 90 15
+wait 20
+shot crew_side
+fill -12 -55 40 -8 -55 44 minecraft:barrier
+tp @s -10 -54 42 0 40
+wait 20
+shot animals
+# Sailing: a big boat with pillagers, a villager to chase
+summon minecraft:villager 0 -55 58 {NoGravity:1b,NoAI:1b}
+summon nekomasfixed:big_acacia_boat -20 -59 50 {Rotation:[-90f,0f],Passengers:[{id:"minecraft:pillager"},{id:"minecraft:pillager"},{id:"minecraft:pillager"}]}
+fill -2 -50 46 2 -50 50 minecraft:barrier
+tp @s 0 -49 48 90 30
+wait 60
+shot sailing_1
+wait 20
+shot sailing_2
+# Riding one
+fill -30 -60 -22 30 -60 -22 minecraft:rail[shape=east_west]
+ride @s mount @e[type=nekomasfixed:huge_oak_boat,limit=1,sort=nearest]
+view 1
+wait 20
+shot ride_third_person
+view 0
+wait 10
+shot ride_first_person
+ride @s dismount
+tp @s 0 -60 -27 0 5
+setblock -6 -60 -14 minecraft:rail[shape=east_west]
+setblock -3 -60 -14 minecraft:rail[shape=east_west]
+setblock 0 -60 -14 minecraft:rail[shape=east_west]
+setblock 3 -60 -14 minecraft:rail[shape=east_west]
+setblock 6 -60 -14 minecraft:rail[shape=east_west]
+summon minecraft:minecart -6 -59.9 -14
+summon minecraft:chest_minecart -3 -59.9 -14
+summon minecraft:furnace_minecart 0 -59.9 -14
+summon minecraft:tnt_minecart 3 -59.9 -14
+summon minecraft:hopper_minecart 6 -59.9 -14
+summon minecraft:minecart -12 -59.9 -22 {Motion:[0.3,0.0,0.0]}
+tp @s 0 -60 -27 0 5
+wait 15
+shot carts
+wait 4
+shot carts_b
+wait 8
+shot carts_moving
+report boats done
