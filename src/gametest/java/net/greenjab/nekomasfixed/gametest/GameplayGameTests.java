@@ -14,7 +14,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.entity.animal.Dolphin;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.item.ItemStack;
@@ -54,10 +53,13 @@ public class GameplayGameTests {
     @GameTest(template = "platform", timeoutTicks = 600)
     public static void zombieInPowderSnowBecomesRime(GameTestHelper h) {
         BlockPos pos = new BlockPos(2, 2, 2);
+        for (var dir : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+            h.setBlock(pos.relative(dir), Blocks.GLASS);
+            h.setBlock(pos.relative(dir).above(), Blocks.GLASS);
+        }
         h.setBlock(pos, Blocks.POWDER_SNOW);
         h.setBlock(pos.above(), Blocks.POWDER_SNOW);
-        Zombie zombie = h.spawn(EntityType.ZOMBIE, pos);
-        zombie.setNoAi(true);
+        h.spawn(EntityType.ZOMBIE, pos);
         h.succeedWhen(() -> h.assertEntityPresent(EntityTypeRegistry.RIME));
     }
 
