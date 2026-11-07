@@ -386,7 +386,6 @@
   "item.nekomasfixed.golden_crown": "Golden Crown",
   "item.nekomasfixed.netherite_crown": "Netherite Crown",
   "component.nekomasfixed.duel_wield": "Can Duel Weild in Odd-Hand",
-  "block.nekomasfixed.baobab_shelf": "Baobab Shelf",
   "entity.nekomasfixed.termite": "Termite",
   "item.nekomasfixed.termite_spawn_egg": "Termite Spawn Egg",
   "block.nekomasfixed.termite_hive": "Termite Hive",
@@ -603,7 +602,6 @@
   "item.nekomasfixed.sky_prism": "Sky Prism",
   "item.nekomasfixed.ancient_prism": "Ancient Prism",
   "item.nekomasfixed.sculk_prism": "Sculk Prism",
-  "enchantment.nekomasfixed.dismount": "Dismount",
   "failed.entity_spawn": "This entity is disabled in this world!",
   "config.main_title.worldgen": "World Gen Options",
   "config.main_title.nether": "Nether Options",
@@ -757,5 +755,7 @@
   "item.minecraft.firework_star.amber": "Amber",
   "item.minecraft.firework_star.aqua": "Aqua",
   "item.minecraft.firework_star.indigo": "Indigo",
-  "item.minecraft.firework_star.maroon": "Maroon"
+  "item.minecraft.firework_star.maroon": "Maroon",
+  "block.nekomasfixed.wall_enderman_head": "Enderman Head",
+  "block.nekomasfixed.wall_sulfur_torch": "Sulfur Wall Torch"
 }

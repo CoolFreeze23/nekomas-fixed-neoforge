@@ -10,8 +10,8 @@ Conversions:
   recipes        string ingredients to {"item"}/{"tag"}, result "id" kept, 26.x-only fields reported
   items/*.json   26.x item definitions become models/item/*.json when they are plain models;
                  anything else (tints, conditions, selects) is printed as MANUAL
-  advancements   string icon/ingredient forms are normalised; everything else copied and reported if it
-                 names something 1.21.1 lacks
+  loot tables    modifier + type become functions + function
+  advancements   recipe_unlocked recipes become recipe
 Everything else is copied as is. Files naming content 1.21.1 lacks are printed as CHECK.
 """
 import json
@@ -50,6 +50,38 @@ def convert_recipe(data):
             data[field] = ingredient(data[field])
     data.pop('show_notification', None) if data.get('show_notification') is True else None
     return data
+
+
+def convert_loot(node):
+    """26.x loot entries say modifier + type where 1.21.1 says functions + function."""
+    if isinstance(node, dict):
+        if 'modifier' in node:
+            value = node.pop('modifier')
+            functions = value if isinstance(value, list) else [value]
+            for function in functions:
+                if 'type' in function and 'function' not in function:
+                    function['function'] = function.pop('type')
+            node['functions'] = functions
+        for value in node.values():
+            convert_loot(value)
+    elif isinstance(node, list):
+        for value in node:
+            convert_loot(value)
+    return node
+
+
+def convert_advancement(node):
+    """recipe_unlocked's condition is recipe here, recipes on 26.x."""
+    if isinstance(node, dict):
+        if node.get('trigger') == 'minecraft:recipe_unlocked' and 'recipes' in node.get('conditions', {}):
+            recipes = node['conditions'].pop('recipes')
+            node['conditions']['recipe'] = recipes[0] if isinstance(recipes, list) else recipes
+        for value in node.values():
+            convert_advancement(value)
+    elif isinstance(node, list):
+        for value in node:
+            convert_advancement(value)
+    return node
 
 
 def main():
@@ -93,6 +125,10 @@ def main():
                             data = {'parent': ref}
                         elif re.match(r'data/[^/]+/recipe/', rel):
                             data = convert_recipe(data)
+                        elif re.match(r'data/[^/]+/loot_table/', rel):
+                            data = convert_loot(data)
+                        elif re.match(r'data/[^/]+/advancement/', rel):
+                            data = convert_advancement(data)
                         text = json.dumps(data, indent=2, ensure_ascii=False)
                         if MISSING_VANILLA.search(text):
                             check.append(rel)

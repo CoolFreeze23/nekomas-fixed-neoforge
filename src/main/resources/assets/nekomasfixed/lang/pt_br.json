@@ -386,7 +386,6 @@
   "item.nekomasfixed.golden_crown": "Coroa de Ouro",
   "item.nekomasfixed.netherite_crown": "Coroa de Netherita",
   "component.nekomasfixed.duel_wield": "Dá para usar outra na mão secundária",
-  "block.nekomasfixed.baobab_shelf": "Prateleira de Baobá",
   "entity.nekomasfixed.termite": "Cupim",
   "item.nekomasfixed.termite_spawn_egg": "Ovo Gerador de Cupim",
   "block.nekomasfixed.termite_hive": "Cupinzeiro",
@@ -603,7 +602,6 @@
   "item.nekomasfixed.sky_prism": "Prisma do Céu",
   "item.nekomasfixed.ancient_prism": "Prisma Antigo",
   "item.nekomasfixed.sculk_prism": "Prisma de Sculk",
-  "enchantment.nekomasfixed.dismount": "Derrubada",
   "failed.entity_spawn": "Esta criatura está desativada neste mundo!",
   "config.main_title.worldgen": "Opções de Geração de Mundo",
   "config.main_title.nether": "Opções do Nether",
@@ -757,5 +755,7 @@
   "item.minecraft.firework_star.amber": "Âmbar",
   "item.minecraft.firework_star.aqua": "Água-Marinha",
   "item.minecraft.firework_star.indigo": "Índigo",
-  "item.minecraft.firework_star.maroon": "Bordô"
+  "item.minecraft.firework_star.maroon": "Bordô",
+  "block.nekomasfixed.wall_enderman_head": "Cabeça de Enderman",
+  "block.nekomasfixed.wall_sulfur_torch": "Tocha de Enxofre de Parede"
 }

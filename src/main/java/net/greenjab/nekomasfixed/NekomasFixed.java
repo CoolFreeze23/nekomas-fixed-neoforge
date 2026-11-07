@@ -78,6 +78,7 @@ public class NekomasFixed {
         NeoForge.EVENT_BUS.addListener(LootTableAdditions::onLivingDrops);
         NeoForge.EVENT_BUS.addListener(VillagerRegistry::onVillagerTrades);
         NeoForge.EVENT_BUS.addListener(NekomasFixed::onEntityJoinLevel);
+        NeoForge.EVENT_BUS.addListener(net.greenjab.nekomasfixed.registry.worldgen.VillageHouses::onServerAboutToStart);
         NeoForge.EVENT_BUS.addListener((ExplosionKnockbackEvent event) -> {
             if (event.getAffectedEntity() instanceof TargetDummy) {
                 event.setKnockbackVelocity(net.minecraft.world.phys.Vec3.ZERO);

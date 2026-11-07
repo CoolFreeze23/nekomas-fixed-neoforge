@@ -292,7 +292,8 @@ T.update({
     'container.nekomasfixed.fletching': 'Arco e Flecha',
 
     'block.nekomasfixed.sulfur_torch': 'Tocha de Enxofre',
-    'block.nekomasfixed.sulfur_wall_torch': 'Tocha de Enxofre de Parede',
+    'block.nekomasfixed.wall_sulfur_torch': 'Tocha de Enxofre de Parede',
+    'block.nekomasfixed.wall_enderman_head': 'Cabeça de Enderman',
     'block.nekomasfixed.sulfur_campfire': 'Fogueira de Enxofre',
     'block.nekomasfixed.sulfur_lantern': 'Lampião de Enxofre',
     'block.nekomasfixed.sulfur_fire': 'Fogo de Enxofre',

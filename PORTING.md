@@ -60,6 +60,7 @@ These depend on vanilla content that 1.21.1 doesn't have, or on a change that wo
   constants by mixin. Other mods iterate `DyeColor.values()` and can crash on them, so this port keeps upstream 1.21.1's separate
   colour system (`ModColors`, `AllDyes`). Firework stars can still take those colours as plain RGB.
 - **Dyed bundles and harnesses, cushions**: 1.21.1 has no such base items.
-- **Spears**, including the throwable spear and lunge changes: vanilla spears arrived in 1.21.11.
+- **Spears**, including the throwable spear, lunge changes and the Dismount enchantment: vanilla spears arrived in 1.21.11.
+- **Baobab shelf**: vanilla shelves arrived in 1.21.9.
 - **Copper armour** (copper goat horn helmet, copper lightning buff): vanilla copper armour arrived in 1.21.9.
 - **Pale oak and poplar variants** of boats and hollow logs, **eyeblossom flower crowns**: those woods and flowers don't exist in 1.21.1.

@@ -9,16 +9,16 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "modifier": [
+          "name": "nekomasfixed:kiln",
+          "functions": [
             {
-              "type": "minecraft:copy_components",
               "include": [
                 "minecraft:custom_name"
               ],
-              "source": "block_entity"
+              "source": "block_entity",
+              "function": "minecraft:copy_components"
             }
-          ],
-          "name": "nekomasfixed:kiln"
+          ]
         }
       ],
       "rolls": 1
