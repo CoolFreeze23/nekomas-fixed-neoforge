@@ -64,3 +64,19 @@ These depend on vanilla content that 1.21.1 doesn't have, or on a change that wo
 - **Baobab shelf**: vanilla shelves arrived in 1.21.9.
 - **Copper armour** (copper goat horn helmet, copper lightning buff): vanilla copper armour arrived in 1.21.9.
 - **Pale oak and poplar variants** of boats and hollow logs, **eyeblossom flower crowns**: those woods and flowers don't exist in 1.21.1.
+
+## Made to fit 1.21.1
+
+- **Sulfur** items exist, but vanilla sulfur doesn't: their recipes use gunpowder and their gas particle is the mod's own.
+- **Option screens** use vanilla widgets instead of Cloth Config, so no extra mod is needed. Copper-armour options are gone with the armour.
+- **Copper crown** is crafted from a leather helmet, since there is no copper helmet.
+- **Quiver tooltip** is drawn with plain rectangles, because the sprites it uses on `main` are newer vanilla assets.
+- **Pyrotechnist houses** join the village pools at server start instead of replacing vanilla's pool files, so they coexist with other mods' houses.
+- **Wool and concrete slabs and stairs** for vanilla colours live under `nekomasfixed:`, as vanilla 1.21.1 has none.
+
+## Testing
+
+- `gradlew runGameTestServer` runs the GameTests in `src/gametest`.
+- `tools/smoke.sh SCRIPT` runs the hidden self-driving client in `src/smoke`, reports missing models and names, and takes screenshots.
+- `tools/gen_pt_br.py VANILLA_PT_BR.json` regenerates `pt_br.json` from its table and fails if an English key has no translation.
+- `tools/parity_audit.py` lists what upstream `main` has that this tree lacks.
