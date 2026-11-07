@@ -1,28 +1,26 @@
 # The Wildfire in both phases, with its trident and shield in every display context
+difficulty normal
 time set noon
 gamerule doMobSpawning false
 gamerule doDaylightCycle false
 gamemode creative @s
 tp @s 0 -59 0 0 10
 fill -30 -60 -2 30 -60 30 minecraft:smooth_stone
-fill -6 -59 3 6 -56 3 minecraft:polished_blackstone_bricks
 summon nekomasfixed:wildfire -5 -59 9 {NoAI:1b}
 summon nekomasfixed:wildfire -2 -59 9 {NoAI:1b,State:17}
 summon nekomasfixed:wildfire 2 -59 9 {NoAI:1b,State:18}
 summon nekomasfixed:wildfire 5 -59 9 {NoAI:1b,State:19}
 wait 20
-give @s nekomasfixed:wildfire_spawn_egg
-give @s nekomasfixed:nether_heart
-give @s nekomasfixed:wildfire_trident
-give @s nekomasfixed:wildfire_shield
-item replace entity @s weapon.mainhand with nekomasfixed:wildfire_trident
+item replace entity @s hotbar.0 with nekomasfixed:wildfire_trident
+item replace entity @s hotbar.1 with nekomasfixed:wildfire_spawn_egg
+item replace entity @s hotbar.2 with nekomasfixed:nether_heart
+item replace entity @s hotbar.3 with nekomasfixed:wildfire_shield
 item replace entity @s weapon.offhand with nekomasfixed:wildfire_shield
 wait 60
 hud on
 shot wildfire_phases
 hud off
 kill @e[type=nekomasfixed:wildfire]
-fill -6 -59 3 6 -56 3 minecraft:air
 setblock -4 -58 7 minecraft:polished_blackstone_bricks
 setblock 4 -58 7 minecraft:polished_blackstone_bricks
 summon minecraft:item_frame -4 -58 6 {Facing:2b,Fixed:1b,Item:{id:"nekomasfixed:wildfire_trident",count:1}}
@@ -31,7 +29,7 @@ summon minecraft:item -2 -58.5 4 {NoGravity:1b,PickupDelay:32767,Age:-32768,Item
 summon minecraft:item 2 -58.5 4 {NoGravity:1b,PickupDelay:32767,Age:-32768,Item:{id:"nekomasfixed:wildfire_shield",count:1}}
 summon minecraft:armor_stand 0 -59 6 {NoGravity:1b,ShowArms:1b,Rotation:[180f,0f],HandItems:[{id:"nekomasfixed:wildfire_trident",count:1},{id:"nekomasfixed:wildfire_shield",count:1}]}
 summon nekomasfixed:wildfire_trident -1 -58 3 {NoGravity:1b,Motion:[0.0,0.0,0.01]}
-summon nekomasfixed:wildfire_trident 1 -58.5 3 {NoGravity:1b,Motion:[0.01,0.0,0.0],item:{id:"nekomasfixed:wildfire_trident",count:1,components:{"minecraft:enchantment_glint_override":true}}}
+summon nekomasfixed:wildfire_trident 1 -58.5 3 {NoGravity:1b,Motion:[0.01,0.0,0.0]}
 summon nekomasfixed:fire_bomb 0 -57 3 {NoGravity:1b}
 wait 15
 hud on
@@ -41,7 +39,6 @@ tp @s 0 -59 2 180 0
 wait 10
 shot player_front
 view 0
-tp @s 0 -59 0 0 10
-wait 5
 hud off
+kill @e[type=!minecraft:player]
 report wildfire smoke done
