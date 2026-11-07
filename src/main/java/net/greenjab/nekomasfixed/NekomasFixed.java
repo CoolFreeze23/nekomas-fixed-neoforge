@@ -24,7 +24,9 @@ import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
+import net.greenjab.nekomasfixed.registry.entity.TargetDummy;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.level.ExplosionKnockbackEvent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
@@ -68,6 +70,11 @@ public class NekomasFixed {
         NeoForge.EVENT_BUS.addListener(LootTableAdditions::onLivingDrops);
         NeoForge.EVENT_BUS.addListener(VillagerRegistry::onVillagerTrades);
         NeoForge.EVENT_BUS.addListener(NekomasFixed::onEntityJoinLevel);
+        NeoForge.EVENT_BUS.addListener((ExplosionKnockbackEvent event) -> {
+            if (event.getAffectedEntity() instanceof TargetDummy) {
+                event.setKnockbackVelocity(net.minecraft.world.phys.Vec3.ZERO);
+            }
+        });
         NeoForge.EVENT_BUS.addListener((ServerAboutToStartEvent event) ->
                 ModConfigValues.onServerStarting(event.getServer().getWorldPath(LevelResource.ROOT)));
         NeoForge.EVENT_BUS.addListener((ServerStoppedEvent event) -> ModConfigValues.onServerStopped());

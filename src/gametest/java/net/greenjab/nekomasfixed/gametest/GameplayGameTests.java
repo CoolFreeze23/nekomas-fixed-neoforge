@@ -67,7 +67,7 @@ public class GameplayGameTests {
         h.assertTrue(!((DolphinAccess) dolphin).nekomasfixed$isTropicalFishFed(), "starts unfed");
         var player = h.makeMockPlayer(GameType.SURVIVAL);
         player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.TROPICAL_FISH));
-        dolphin.mobInteract(player, InteractionHand.MAIN_HAND);
+        dolphin.interact(player, InteractionHand.MAIN_HAND);
         h.assertTrue(((DolphinAccess) dolphin).nekomasfixed$isTropicalFishFed(), "fish should be remembered");
         h.succeed();
     }
