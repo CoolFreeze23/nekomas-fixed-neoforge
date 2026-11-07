@@ -88,6 +88,18 @@ public final class TintedGlint {
         return base == null ? "" : "_" + Integer.toHexString(base.hashCode());
     }
 
+    /**
+     * Armor layers draw without the view offset of vanilla's armor render types, so armor foil has to match
+     * them or it fails its depth test. A colour of 0 gives the plain foil here.
+     */
+    public static RenderType armor(MultiBufferSource buffer, RenderType vanilla) {
+        if (buffer instanceof MultiBufferSource.BufferSource source && source != Minecraft.getInstance().renderBuffers().bufferSource()) {
+            return vanilla;
+        }
+        RenderType type = type(Kind.ARMOR, GlintContext.getColor(), GlintContext.getBase());
+        return type != null ? type : vanilla;
+    }
+
     /** The tinted version of a vanilla foil render type for the item being drawn, or the same type when it has no glint colour. */
     public static RenderType replace(RenderType vanilla, MultiBufferSource buffer) {
         int color = GlintContext.getColor();
@@ -105,10 +117,8 @@ public final class TintedGlint {
             kind = Kind.ITEM_TRANSLUCENT;
         } else if (vanilla == RenderType.entityGlint()) {
             kind = Kind.ENTITY;
-        } else if (vanilla == RenderType.entityGlintDirect()) {
-            kind = Kind.ENTITY_DIRECT;
         } else {
-            kind = Kind.ARMOR;
+            kind = Kind.ENTITY_DIRECT;
         }
         RenderType tinted = type(kind, color, GlintContext.getBase());
         return tinted != null ? tinted : vanilla;
@@ -154,6 +164,9 @@ public final class TintedGlint {
     }
 
     private static @Nullable ResourceLocation texture(boolean entity, int color, @Nullable ResourceLocation base) {
+        if (color == 0) {
+            return entity ? ItemRenderer.ENCHANTED_GLINT_ENTITY : ItemRenderer.ENCHANTED_GLINT_ITEM;
+        }
         TexKey key = new TexKey(entity, color, base);
         if (TEXTURES.containsKey(key)) {
             return TEXTURES.get(key);

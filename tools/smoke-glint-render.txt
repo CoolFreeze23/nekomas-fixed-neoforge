@@ -1,0 +1,32 @@
+# Foil on worn armor, dropped items, block items and held special items
+time set noon
+gamerule doMobSpawning false
+gamerule doDaylightCycle false
+tp @s 0 -59 -1 0 0
+fill -8 -60 -2 8 -60 12 minecraft:smooth_stone
+summon minecraft:armor_stand -3 -59 3 {Rotation:[180f,0f],ArmorItems:[{id:"minecraft:iron_boots",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:red"}},{id:"minecraft:iron_leggings",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:red"}},{id:"minecraft:iron_chestplate",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:red"}},{id:"minecraft:iron_helmet",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:red"}}]}
+summon minecraft:armor_stand -1 -59 3 {Rotation:[180f,0f],ArmorItems:[{id:"minecraft:iron_boots",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:blue"}},{id:"minecraft:iron_leggings",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:blue"}},{id:"minecraft:iron_chestplate",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:blue"}},{id:"minecraft:iron_helmet",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:blue"}}]}
+summon minecraft:armor_stand 1 -59 3 {Rotation:[180f,0f],ArmorItems:[{id:"minecraft:iron_boots",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:sculk"}},{id:"minecraft:iron_leggings",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:sculk"}},{id:"minecraft:iron_chestplate",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:sculk"}},{id:"minecraft:iron_helmet",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:sculk"}}]}
+summon minecraft:armor_stand 3 -59 3 {Rotation:[180f,0f],ArmorItems:[{id:"minecraft:iron_boots",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}},{id:"minecraft:iron_leggings",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}},{id:"minecraft:iron_chestplate",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}},{id:"minecraft:iron_helmet",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}}}}]}
+summon minecraft:armor_stand 5 -59 3 {Rotation:[180f,0f],ArmorItems:[{id:"minecraft:iron_boots"},{id:"minecraft:iron_leggings"},{id:"minecraft:iron_chestplate"},{id:"minecraft:iron_helmet"}]}
+summon minecraft:armor_stand -5 -59 3 {Rotation:[180f,0f],ArmorItems:[{id:"minecraft:iron_boots",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:rainbow"}},{id:"minecraft:iron_leggings",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:rainbow"}},{id:"minecraft:iron_chestplate",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:rainbow"}},{id:"minecraft:iron_helmet",components:{"minecraft:enchantments":{levels:{"minecraft:protection":1}},"nekomasfixed:armor_glint":"nekomasfixed:rainbow"}}]}
+summon minecraft:item -2 -59 1 {PickupDelay:32767,Age:-32768,Item:{id:"minecraft:iron_sword",components:{"minecraft:enchantments":{levels:{"minecraft:sharpness":1}},"nekomasfixed:armor_glint":"nekomasfixed:red"}}}
+summon minecraft:item 0 -59 1 {PickupDelay:32767,Age:-32768,Item:{id:"minecraft:iron_block",components:{"minecraft:enchantment_glint_override":true,"nekomasfixed:armor_glint":"nekomasfixed:blue"}}}
+summon minecraft:item 2 -59 1 {PickupDelay:32767,Age:-32768,Item:{id:"minecraft:iron_sword",components:{"minecraft:enchantments":{levels:{"minecraft:sharpness":1}}}}}
+item replace entity @s weapon.mainhand with minecraft:trident[minecraft:enchantments={levels:{"minecraft:loyalty":1}},nekomasfixed:armor_glint="nekomasfixed:lime"]
+item replace entity @s weapon.offhand with minecraft:shield[minecraft:enchantments={levels:{"minecraft:unbreaking":1}},nekomasfixed:armor_glint="nekomasfixed:red"]
+wait 60
+hud off
+shot stands_1
+wait 10
+shot stands_2
+wait 10
+shot stands_3
+hud on
+wait 5
+shot held_trident_shield
+item replace entity @s weapon.mainhand with minecraft:compass[minecraft:enchantments={levels:{"minecraft:unbreaking":1}},nekomasfixed:armor_glint="nekomasfixed:lime"]
+item replace entity @s weapon.offhand with minecraft:glass[minecraft:enchantment_glint_override=true,nekomasfixed:armor_glint="nekomasfixed:red"]
+wait 10
+shot held_compass_glass
+report glint render done

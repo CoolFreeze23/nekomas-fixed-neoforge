@@ -33,6 +33,6 @@ public class HumanoidArmorLayerGlintMixin {
     @ModifyExpressionValue(method = "renderGlint(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/model/Model;)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/RenderType;armorEntityGlint()Lnet/minecraft/client/renderer/RenderType;"))
     private RenderType nekomasfixed$tintArmorFoil(RenderType original, @Local(argsOnly = true) MultiBufferSource buffer) {
-        return TintedGlint.replace(original, buffer);
+        return TintedGlint.armor(buffer, original);
     }
 }

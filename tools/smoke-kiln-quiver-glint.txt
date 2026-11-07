@@ -49,7 +49,7 @@ item replace entity @s hotbar.4 with nekomasfixed:quiver
 item replace entity @s hotbar.5 with nekomasfixed:quiver[nekomasfixed:quiver_contents=[{id:"minecraft:arrow",count:12},{id:"minecraft:spectral_arrow",count:3}]]
 item replace entity @s hotbar.6 with nekomasfixed:tipped_arrow_custom[nekomasfixed:tipped_potion_contents={potion_contents:[{potion:"minecraft:swiftness"},{potion:"minecraft:poison"}]}]
 item replace entity @s hotbar.7 with nekomasfixed:tipped_arrow_custom
-# Worn armor, tinted on the left player copy view
+# Worn armor
 item replace entity @s armor.head with minecraft:diamond_helmet[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:red"]
 item replace entity @s armor.chest with minecraft:diamond_chestplate[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:lime"]
 item replace entity @s armor.legs with minecraft:diamond_leggings[minecraft:enchantments={levels:{"minecraft:protection":1}},nekomasfixed:armor_glint="nekomasfixed:blue"]
