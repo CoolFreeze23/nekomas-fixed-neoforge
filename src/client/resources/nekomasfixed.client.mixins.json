@@ -16,7 +16,8 @@
     "ItemRendererMixin",
     "SheepFurLayerMixin",
     "ShulkerBoxRendererMixin",
-    "SignRendererMixin"
+    "SignRendererMixin",
+    "WildfireFlameMixin"
   ],
   "injectors": {
     "defaultRequire": 1
