@@ -1,4 +1,5 @@
 # Termites, hive, flower crowns, metal crowns, horned helmets and the jewel trim on the flat world
+difficulty easy
 time set noon
 gamerule doMobSpawning false
 gamerule doDaylightCycle false
@@ -30,9 +31,14 @@ summon minecraft:zombie -7 -59 6 {NoAI:1b,Rotation:[180f,0f],ArmorItems:[{},{},{
 wait 60
 hud off
 shot termite_gallery
-tp @s 0 -58.2 2.2 0 40
+tp @s -2 -57.8 0.8 0 30
 wait 30
 shot termites_close
+tp @s -6 -58 4.5 180 10
+wait 20
+tp @s -7 -58 3.8 0 10
+wait 20
+shot zombie_crown
 tp @s 0 -58 4.5 0 10
 wait 30
 shot crowns_close
