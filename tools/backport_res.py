@@ -21,7 +21,7 @@ import shutil
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MAIN = os.environ.get('NEKOMA_MAIN', 'D:/Ports/nekomas-main/src/main')
+MAIN = os.path.join(os.environ.get('NEKOMA_MAIN', os.path.join(ROOT, '..', 'nekomas-main')), 'src', 'main')
 SOURCES = [os.path.join(MAIN, 'resources'), os.path.join(MAIN, 'generated')]
 DEST = os.path.join(ROOT, 'src', 'main', 'resources')
 PORT_ROOTS = [DEST, os.path.join(ROOT, 'src', 'main', 'generated')]

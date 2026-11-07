@@ -13,7 +13,9 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANG = os.path.join(ROOT, 'src/main/resources/assets/nekomasfixed/lang')
 EN = json.load(open(os.path.join(LANG, 'en_us.json'), encoding='utf8'))
-V = json.load(open(sys.argv[1] if len(sys.argv) > 1 else 'D:/Ports/vanilla_pt_br.json', encoding='utf8'))
+if len(sys.argv) < 2:
+    sys.exit('usage: tools/gen_pt_br.py PATH/TO/minecraft/lang/pt_br.json (from the 1.21.1 assets)')
+V = json.load(open(sys.argv[1], encoding='utf8'))
 
 VANILLA = 'white orange magenta light_blue yellow lime pink gray light_gray cyan purple blue brown green red black'.split()
 EXTRA = {'amber': 'Âmbar', 'aqua': 'Água-Marinha', 'indigo': 'Índigo', 'maroon': 'Bordô'}

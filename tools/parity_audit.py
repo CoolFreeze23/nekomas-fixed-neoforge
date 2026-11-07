@@ -9,7 +9,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MAIN = os.environ.get('NEKOMA_MAIN', 'D:/Ports/nekomas-main')
+MAIN = os.environ.get('NEKOMA_MAIN', os.path.join(ROOT, '..', 'nekomas-main'))
 LEFT_OUT = re.compile(
     r'pale_oak|poplar|eyeblossom|cushion|harness|_bundle|(^|[/_:])spear|goat_horn_copper|copper_armor|_banner(_|$)|resin|shelf_never|'
     r'(amber|aqua|indigo|maroon)_banner|banner/(amber|aqua|indigo|maroon)')

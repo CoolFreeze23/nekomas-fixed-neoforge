@@ -7,8 +7,8 @@ Sources it is built from:
 - `upstream 1.21.1` (Fabric, branch `1.21.1`, cb1d1c9d), the base of this tree. Mojang names, 1.21.1 APIs.
 - `upstream main` (0733f7ea, 0.5.5 for 26.3), the feature target. Features only `main` has are brought back here.
 
-Local copies when working on this PC: `D:/Ports/nekomas-121` and `D:/Ports/nekomas-main`. NeoForge's patched
-Minecraft source for reading: `D:/Ports/neo-src`.
+The tools expect a checkout of upstream `main` at `../nekomas-main` (or set `NEKOMA_MAIN`). NeoForge's patched Minecraft
+source comes with the build: `build/moddev/artifacts/neoforge-*-sources.jar`.
 
 ## Tree
 
@@ -46,7 +46,7 @@ Rules:
   forced to load from there. Anything that loads later than `init()` can't register.
 - **Creative tabs**: add items through `ItemGroupRegistry.MAIN_EXTRAS` or `ItemGroupRegistry.COLOUR_EXTRAS`.
 - **Client registration**: add a static method to the feature's own client class and call it from `NekomasFixedClient`'s event listeners.
-- **Mixins**: list them in `nekomasfixed.mixins.json` or `nekomasfixed.client.mixins.json`. Read the target in `D:/Ports/neo-src`, because
+- **Mixins**: list them in `nekomasfixed.mixins.json` or `nekomasfixed.client.mixins.json`. Read the target in NeoForge's patched source, because
   NeoForge patches many methods. A name-only `method =` picks the first overload, so give the full descriptor when there is more than one.
 - **Biomes**: JSON in `data/nekomasfixed/neoforge/biome_modifier/`.
 - **Names** of blocks, items and entities stay upstream main's, so existing lang keys and textures keep working. Lang text is handled
