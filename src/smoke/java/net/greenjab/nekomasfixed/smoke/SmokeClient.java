@@ -5,8 +5,12 @@ import net.greenjab.nekomasfixed.NekomasFixed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.screens.TitleScreen;
+import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.Difficulty;
@@ -21,9 +25,12 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.WorldOptions;
 import net.minecraft.world.level.levelgen.presets.WorldPresets;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
@@ -40,6 +47,9 @@ import java.util.function.Function;
  * Dev-only client check that runs by itself in a hidden window. It creates a flat creative world,
  * reports missing block and item models and names, then plays a script file:
  * a line is a server command, or "wait N", "shot NAME", "hud on|off", "view 0|1|2", "screen NAME|none", or "report TEXT".
+ * a line is a server command, or "wait N", "shot NAME", "hud on|off", "view 0|1|2", "report TEXT",
+ * "useblock X Y Z" (the player right-clicks the block), "closegui", "inventory", "book" (toggles the
+ * open furnace screen's recipe book) or "tooltip on|off" (draws the held item's tooltip over the HUD).
  */
 @Mod(value = NekomasFixed.NAMESPACE, dist = Dist.CLIENT)
 public class SmokeClient {
@@ -51,10 +61,19 @@ public class SmokeClient {
     private Path dir;
     private int state;
     private int wait = 40;
+    private boolean tooltip;
 
     public SmokeClient() {
         if (Boolean.getBoolean("nekoma.smoke")) {
             NeoForge.EVENT_BUS.addListener(this::onTick);
+            NeoForge.EVENT_BUS.addListener(this::onRenderGui);
+        }
+    }
+
+    private void onRenderGui(RenderGuiEvent.Post event) {
+        Minecraft mc = Minecraft.getInstance();
+        if (tooltip && mc.player != null) {
+            event.getGuiGraphics().renderTooltip(mc.font, mc.player.getMainHandItem(), 40, 40);
         }
     }
 
@@ -137,6 +156,27 @@ public class SmokeClient {
                 case "pause" -> new net.minecraft.client.gui.screens.PauseScreen(true);
                 default -> null;
             });
+            case "tooltip" -> tooltip = parts[1].equals("on");
+            case "closegui" -> mc.player.closeContainer();
+            case "inventory" -> mc.setScreen(new InventoryScreen(mc.player));
+            case "book" -> {
+                if (mc.screen instanceof AbstractFurnaceScreen<?> furnace) {
+                    furnace.recipeBookComponent.toggleVisibility();
+                    furnace.resize(mc, furnace.width, furnace.height);
+                }
+            }
+            case "useblock" -> {
+                String[] xyz = parts[1].split(" ");
+                BlockPos pos = new BlockPos(Integer.parseInt(xyz[0]), Integer.parseInt(xyz[1]), Integer.parseInt(xyz[2]));
+                var server = mc.getSingleplayerServer();
+                var uuid = mc.player.getUUID();
+                server.execute(() -> {
+                    var player = server.getPlayerList().getPlayer(uuid);
+                    var level = player.serverLevel();
+                    level.getBlockState(pos).useWithoutItem(level, player, new BlockHitResult(Vec3.atCenterOf(pos), Direction.UP, pos, false));
+                });
+                wait = 2;
+            }
             default -> {
                 var server = mc.getSingleplayerServer();
                 String command = line.startsWith("/") ? line.substring(1) : line;

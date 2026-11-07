@@ -1,6 +1,7 @@
 package net.greenjab.nekomasfixed;
 
 import net.greenjab.nekomasfixed.mixin.client.ItemPropertiesAccessor;
+import net.greenjab.nekomasfixed.registries.KilnQuiverGlintClient;
 import net.greenjab.nekomasfixed.registries.ModBlockEntityRendererRegistry;
 import net.greenjab.nekomasfixed.registries.ModEntityRendererRegistry;
 import net.greenjab.nekomasfixed.registries.TermiteCrownClient;
@@ -35,6 +36,7 @@ public class NekomasFixedClient {
         modBus.addListener(TermiteCrownClient::addLayers);
         modBus.addListener(TermiteCrownClient::registerTooltips);
         PotSoupColourClient.attach(modBus);
+        KilnQuiverGlintClient.register(modBus);
     }
 
     private static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {

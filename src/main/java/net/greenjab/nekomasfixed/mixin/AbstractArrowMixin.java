@@ -1,6 +1,8 @@
 package net.greenjab.nekomasfixed.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import net.greenjab.nekomasfixed.registry.other.TippedArrowCustomComponent;
+import net.greenjab.nekomasfixed.registry.registries.ArcheryRegistry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,16 +27,27 @@ public abstract class AbstractArrowMixin {
         ItemStack arrow = arrowEntity.getPickupItemStackOrigin();
         PotionContents contents = arrow.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
         if (contents != PotionContents.EMPTY) {
-            AreaEffectCloud cloud = new AreaEffectCloud(level, x, y, z);
-            cloud.setRadius(2.0F);
-            cloud.setRadiusOnUse(0.0F);
-            cloud.setDuration(100);
-            cloud.setWaitTime(5);
-            cloud.setPotionContents(contents);
-            cloud.setRadiusPerTick(-cloud.getRadius() / (float) cloud.getDuration());
-            level.addFreshEntity(cloud);
-            arrowEntity.addTag("areaEffect");
+            spawnCloud(arrowEntity, level, x, y, z, contents);
         }
+        TippedArrowCustomComponent component = arrow.get(ArcheryRegistry.TIPPED_POTION_CONTENTS);
+        if (component != null) {
+            for (PotionContents content : component.potionContents()) {
+                spawnCloud(arrowEntity, level, x, y, z, content);
+            }
+        }
+    }
+
+    @Unique
+    private static void spawnCloud(Arrow arrowEntity, Level level, double x, double y, double z, PotionContents contents) {
+        AreaEffectCloud cloud = new AreaEffectCloud(level, x, y, z);
+        cloud.setRadius(2.0F);
+        cloud.setRadiusOnUse(0.0F);
+        cloud.setDuration(100);
+        cloud.setWaitTime(5);
+        cloud.setPotionContents(contents);
+        cloud.setRadiusPerTick(-cloud.getRadius() / (float) cloud.getDuration());
+        level.addFreshEntity(cloud);
+        arrowEntity.addTag("areaEffect");
     }
 
     // Tipped arrow leaving a lingering cloud on an entity hit.

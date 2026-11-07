@@ -1,0 +1,13 @@
+{
+  "type": "nekomasfixed:kilning",
+  "category": "blocks",
+  "ingredient": {
+    "item": "minecraft:light_blue_terracotta"
+  },
+  "result": {
+    "id": "minecraft:light_blue_glazed_terracotta",
+    "count": 1
+  },
+  "experience": 0.4,
+  "cookingtime": 100
+}
