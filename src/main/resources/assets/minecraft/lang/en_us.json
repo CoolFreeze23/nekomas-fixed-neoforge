@@ -1,3 +1,4 @@
 {
-  "block.minecraft.clock": "Clock"
+  "block.minecraft.clock": "Clock",
+  "block.minecraft.wall_clock": "Clock"
 }

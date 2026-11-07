@@ -96,6 +96,7 @@ public class EntityTypeRegistry {
     }
 
     public static void registerEntityType() {
+        TargetDummy.registerSerializer();
         NekomasFixed.LOGGER.info("Registering entity types");
     }
 
@@ -109,6 +110,8 @@ public class EntityTypeRegistry {
     }
 
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+        event.register(MOOBLOOM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                net.minecraft.world.entity.animal.Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DERELICT, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DRENCHED, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,

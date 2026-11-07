@@ -82,8 +82,9 @@ public class TargetDummy extends LivingEntity implements Shearable {
     static final EntityDataAccessor<Vector3f> HIT_JITTER =
             SynchedEntityData.defineId(TargetDummy.class, EntityDataSerializers.VECTOR3);
 
-    static {
-        EntityDataSerializers.registerSerializer(RESOLVABLE_PROFILE);
+    public static void registerSerializer() {
+        net.minecraft.core.Registry.register(net.neoforged.neoforge.registries.NeoForgeRegistries.ENTITY_DATA_SERIALIZERS,
+                net.greenjab.nekomasfixed.NekomasFixed.id("resolvable_profile"), RESOLVABLE_PROFILE);
     }
 
     private final Map<EquipmentSlot, ItemStack> dummyEquipment = new EnumMap<>(EquipmentSlot.class);

@@ -47,6 +47,7 @@ public class NekomasFixed {
     public NekomasFixed(IEventBus modBus) {
         modBus.addListener(NekomasFixed::onRegister);
         modBus.addListener(SyncHandler::register);
+        modBus.addListener(BlockEntityRegistry::attachBlockEntities);
         modBus.addListener(EntityTypeRegistry::registerAttributes);
         modBus.addListener(EntityTypeRegistry::registerSpawnPlacements);
         NeoForge.EVENT_BUS.addListener(GlowingDecoratedPotPatternRegistry::onUseBlock);
@@ -81,7 +82,6 @@ public class NekomasFixed {
         RecipeRegistry.registerRecipes();
         EnchantmentRegistry.registerEnchantments();
         ItemGroupRegistry.registerItemGroup();
-        BlockEntityRegistry.attachBlockEntities();
         ModWorldGeneration.generateModWorldGen();
         SoundEventRegistry.registerSoundEvents();
         GlowingDecoratedPotPatternRegistry.registerGlowingDecoratedPotPatterns();

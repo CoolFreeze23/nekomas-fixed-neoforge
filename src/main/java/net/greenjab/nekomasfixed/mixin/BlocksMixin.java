@@ -22,7 +22,11 @@ public class BlocksMixin {
                     ordinal = 0
             ),
             slice = @Slice(
-                    from = @At(value = "CONSTANT", args = "stringValue=melon"),
+                    from = @At(
+                            value = "FIELD",
+                            target = "Lnet/minecraft/references/Blocks;MELON:Lnet/minecraft/resources/ResourceKey;",
+                            opcode = Opcodes.GETSTATIC
+                    ),
                     to = @At(
                             value = "FIELD",
                             target = "Lnet/minecraft/world/level/block/Blocks;MELON:Lnet/minecraft/world/level/block/Block;",
