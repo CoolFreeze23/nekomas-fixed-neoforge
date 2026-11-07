@@ -5,6 +5,13 @@
   "mixins": [
     "AbstractArrowMixin",
     "AnimalMixin",
+    "BlockMixin",
+    "DolphinMixin",
+    "FallingBlockEntityMixin",
+    "FoxMixin",
+    "OcelotMixin",
+    "SpawnEggItemMixin",
+    "ZombieMixin",
     "ArmorStandMixin",
     "BannerBlockEntityMixin",
     "BannerItemMixin",

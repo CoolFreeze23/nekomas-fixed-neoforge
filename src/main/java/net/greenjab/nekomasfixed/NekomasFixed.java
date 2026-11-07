@@ -18,6 +18,13 @@ import net.greenjab.nekomasfixed.util.ModTrunkPlacers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
+import net.greenjab.nekomasfixed.util.options.EntitySpawnOption;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Monster;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
@@ -57,6 +64,10 @@ public class NekomasFixed {
         NeoForge.EVENT_BUS.addListener(GlowingDecoratedPotPatternRegistry::onUseBlock);
         NeoForge.EVENT_BUS.addListener(LootTableModifierRegistry::onLootTableLoad);
         NeoForge.EVENT_BUS.addListener(BlockRegistry::onToolModification);
+        NeoForge.EVENT_BUS.addListener(LootTableAdditions::onLootTableLoad);
+        NeoForge.EVENT_BUS.addListener(LootTableAdditions::onLivingDrops);
+        NeoForge.EVENT_BUS.addListener(VillagerRegistry::onVillagerTrades);
+        NeoForge.EVENT_BUS.addListener(NekomasFixed::onEntityJoinLevel);
         NeoForge.EVENT_BUS.addListener((ServerAboutToStartEvent event) ->
                 ModConfigValues.onServerStarting(event.getServer().getWorldPath(LevelResource.ROOT)));
         NeoForge.EVENT_BUS.addListener((ServerStoppedEvent event) -> ModConfigValues.onServerStopped());
@@ -70,6 +81,20 @@ public class NekomasFixed {
     private static void onRegister(RegisterEvent event) {
         if (event.getRegistryKey().equals(Registries.ENTITY_TYPE)) {
             init();
+        }
+    }
+
+    private static void onEntityJoinLevel(EntityJoinLevelEvent event) {
+        Entity entity = event.getEntity();
+        // Entities turned off in this world's options don't spawn; ones already saved stay.
+        if (!event.loadedFromDisk() && EntitySpawnOption.isDisabled(entity.getType())) {
+            event.setCanceled(true);
+            return;
+        }
+        // Monsters keep away from ocelots that trust a player.
+        if (entity instanceof Monster monster && !(entity instanceof Creeper)) {
+            monster.goalSelector.addGoal(1, new AvoidEntityGoal<>(monster, Ocelot.class,
+                    target -> target instanceof Ocelot ocelot && ocelot.isTrusting(), 8.0F, 1.0D, 1.3D, living -> true));
         }
     }
 
@@ -92,5 +117,6 @@ public class NekomasFixed {
         ModWorldGeneration.generateModWorldGen();
         SoundEventRegistry.registerSoundEvents();
         GlowingDecoratedPotPatternRegistry.registerGlowingDecoratedPotPatterns();
+        VillagerRegistry.registerVillagers();
     }
 }

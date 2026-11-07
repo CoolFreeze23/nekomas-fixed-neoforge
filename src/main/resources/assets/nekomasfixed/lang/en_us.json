@@ -692,5 +692,6 @@
   "advancements.nekomasfixed.flower_power.title": "Flower Power",
   "advancements.nekomasfixed.flower_power.description": "Collect Every Flower Crown",
   "advancements.nekomasfixed.prismaniac.title": "Prismaniac",
-  "advancements.nekomasfixed.prismaniac.description": "Collect every Prism Color"
+  "advancements.nekomasfixed.prismaniac.description": "Collect every Prism Color",
+  "entity.minecraft.villager.nekomasfixed.pyrotechnist": "Pyrotechnist"
 }

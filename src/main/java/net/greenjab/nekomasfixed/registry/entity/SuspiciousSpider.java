@@ -63,7 +63,8 @@ public class SuspiciousSpider extends Spider {
     }
 
     public static boolean canSpawn(EntityType<? extends Monster> type, ServerLevelAccessor level, MobSpawnType spawnReason, BlockPos pos, RandomSource random) {
-        return Monster.checkMonsterSpawnRules(type, level, spawnReason, pos, random)
+        return net.greenjab.nekomasfixed.screen.config.ModConfigValues.spawnSusSpider.get()
+                && Monster.checkMonsterSpawnRules(type, level, spawnReason, pos, random)
                 && (MobSpawnType.isSpawner(spawnReason) || !level.canSeeSky(pos));
     }
 }

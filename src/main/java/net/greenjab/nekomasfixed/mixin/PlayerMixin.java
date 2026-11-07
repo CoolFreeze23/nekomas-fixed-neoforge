@@ -6,8 +6,10 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.greenjab.nekomasfixed.registry.registries.ComponentRegistry;
 import net.greenjab.nekomasfixed.registry.registries.ItemRegistry;
+import net.greenjab.nekomasfixed.screen.config.ModConfigValues;
 import net.greenjab.nekomasfixed.util.ModData;
 import net.greenjab.nekomasfixed.util.ModTags;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -21,10 +23,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.MaceItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Player.class)
@@ -88,11 +92,6 @@ public class PlayerMixin {
             return true;
         }
 
-        // dual-wielding sickles: shorter invulnerability window so both hits connect
-        if (PE.getItemInHand(InteractionHand.MAIN_HAND).is(ModTags.SICKLES) && PE.getItemInHand(InteractionHand.OFF_HAND).is(ModTags.SICKLES)) {
-            target.invulnerableTime = 10;
-        }
-
         return original.call(target, source, damage);
     }
 
@@ -132,6 +131,52 @@ public class PlayerMixin {
     @Inject(method = "actuallyHurt", at = @At("HEAD"))
     private void cancelCombo(DamageSource source, float damage, CallbackInfo ci) {
         ModData.combos.remove(((Player) (Object) this).getUUID());
+    }
+
+    // dual-wielding sickles: off-hand swings hit at full strength.
+    @ModifyExpressionValue(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;getAttackStrengthScale(F)F"))
+    private float offHandDamage(float original) {
+        Player player = (Player) (Object) this;
+        if (player.getItemInHand(InteractionHand.MAIN_HAND).is(ModTags.SICKLES) && player.getItemInHand(InteractionHand.OFF_HAND).is(ModTags.SICKLES)) {
+            return 1.0F;
+        }
+        return original;
+    }
+
+    // A turtle shell takes the blow of a mace smash on its own durability.
+    @ModifyVariable(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;removeEntitiesOnShoulder()V"), ordinal = 0, argsOnly = true)
+    private float turtleHelmetMaceBlock(float damage, @Local(argsOnly = true) DamageSource source) {
+        Player PE = (Player) (Object) this;
+        if (PE.getItemBySlot(EquipmentSlot.HEAD).is(Items.TURTLE_HELMET) && source.getWeaponItem() != null && source.getWeaponItem().is(Items.MACE)
+                && source.getDirectEntity() instanceof LivingEntity attacker && MaceItem.canSmashAttack(attacker)) {
+            PE.getItemBySlot(EquipmentSlot.HEAD).hurtAndBreak((int) damage, PE, EquipmentSlot.HEAD);
+            return 0.00123f;
+        }
+        return damage;
+    }
+
+    // Food slowly rots into rotten flesh while in the Nether.
+    @Unique
+    private void checkForEdibles(Player PE) {
+        if (PE.getRandom().nextInt(15 * 20) > 0) return;
+        var inventory = PE.getInventory();
+        ItemStack food = inventory.getItem(PE.getRandom().nextInt(inventory.getContainerSize()));
+        if (!food.isEmpty() && food.is(ModTags.FOOD_ITEMS)) {
+            food.shrink(1);
+            ItemStack rotten = new ItemStack(Items.ROTTEN_FLESH);
+            if (!inventory.add(rotten.copy())) {
+                PE.drop(rotten, false);
+            }
+        }
+    }
+
+    @Inject(method = "tick", at = @At("RETURN"))
+    private void tickNetherFood(CallbackInfo ci) {
+        Player PE = (Player) (Object) this;
+        if (!PE.level().isClientSide() && !PE.isCreative() && !PE.isSpectator() && ModConfigValues.netherFoodRotting.get()
+                && PE.level().getBiome(PE.blockPosition()).is(BiomeTags.IS_NETHER)) {
+            this.checkForEdibles(PE);
+        }
     }
 
     // the combo timer counts down each tick and removes itself at 0 (main's customTickLogics).

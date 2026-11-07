@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.biome.Biome;
 
 public class ModTags {
+    public static final TagKey<Item> FOOD_ITEMS = TagKey.create(Registries.ITEM, NekomasFixed.id("food_items"));
+    public static final TagKey<Block> SIEVABLE_BLOCKS = TagKey.create(Registries.BLOCK, NekomasFixed.id("sievable_blocks"));
     public static final TagKey<Item> STACKED_CAKES = TagKey.create(Registries.ITEM, NekomasFixed.id("stacked_cakes"));
     public static final TagKey<Item> CLAMS = itemTag("clams");
     public static final TagKey<Item> CORALS = itemTag("corals");

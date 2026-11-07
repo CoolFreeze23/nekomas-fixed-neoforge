@@ -2,6 +2,7 @@ package net.greenjab.nekomasfixed.registry.block;
 
 import com.mojang.serialization.MapCodec;
 import net.greenjab.nekomasfixed.registry.block.entity.StackedCakeBlockEntity;
+import net.greenjab.nekomasfixed.screen.config.ModConfigValues;
 import net.greenjab.nekomasfixed.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -182,7 +183,8 @@ public class StackedCakeBlock extends AbstractCandleBlock implements EntityBlock
         if (level.isClientSide()) return ItemInteractionResult.SUCCESS;
         else if (level.getBlockEntity(pos) instanceof StackedCakeBlockEntity stackedCakeBlockEntity) {
             if (state.getValue(SLICES) == 7 || state.getValue(SLICES) == 14 || state.getValue(SLICES) == 21) {
-                if (player.getMainHandItem().is(ModTags.STACKED_CAKES) && state.getValue(SLICES) != 21) {
+                if (player.getMainHandItem().is(ModTags.STACKED_CAKES) && ModConfigValues.enableStackedCakes.get()
+                        && state.getValue(SLICES) / 7 < Math.max(1, Math.min(ModConfigValues.cakeSize.get(), 3))) {
                     this.addCakeLayer(stack, stackedCakeBlockEntity, state);
                     level.setBlockAndUpdate(pos, level.getBlockState(pos).setValue(SLICES, state.getValue(SLICES) + 7));
                     level.playSound(null, player, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.PLAYERS, 1.0F, 1.0F);
