@@ -1,0 +1,78 @@
+# Everything in one world, for a last look. Run with lang:pt_br in run-smoke/options.txt to read the translation in place.
+time set noon
+gamerule doMobSpawning false
+gamerule doDaylightCycle false
+fill -40 -60 -6 40 -60 40 minecraft:smooth_stone
+fill -40 -59 -6 40 -50 40 minecraft:air
+tp @s 0 -58 -3 0 10
+setblock -8 -59 3 nekomasfixed:kiln
+setblock -7 -59 3 minecraft:fletching_table
+setblock -6 -59 3 nekomasfixed:pyrotechnics_table
+setblock -5 -59 3 nekomasfixed:termite_hive
+setblock -4 -59 3 nekomasfixed:terracotta_decorated_pot
+setblock -3 -59 3 nekomasfixed:sulfur_lantern
+setblock -2 -59 3 nekomasfixed:sulfur_torch
+setblock -1 -59 3 nekomasfixed:gold_chain
+setblock 0 -59 3 nekomasfixed:corrupted_beacon
+setblock 1 -59 3 nekomasfixed:geyser
+setblock 2 -59 3 nekomasfixed:hollow_baobab_log
+setblock 3 -59 3 nekomasfixed:amber_spotted_wool_stairs
+setblock 4 -59 3 nekomasfixed:indigo_concrete_slab
+setblock 5 -59 3 nekomasfixed:white_wool_stairs
+setblock 6 -59 3 minecraft:clock
+setblock 7 -59 3 nekomasfixed:apple_cake
+setblock 8 -59 3 nekomasfixed:clam_purple
+summon nekomasfixed:wildfire -8 -59 9 {NoAI:1b}
+summon nekomasfixed:termite -5 -59 7 {NoAI:1b}
+summon nekomasfixed:moobloom -3 -59 8 {NoAI:1b}
+summon nekomasfixed:derelict -1 -59 8 {NoAI:1b}
+summon nekomasfixed:rime 1 -59 8 {NoAI:1b}
+summon nekomasfixed:drenched 3 -59 8 {NoAI:1b}
+summon nekomasfixed:suspicious_spider 5 -59 8 {NoAI:1b}
+summon nekomasfixed:target_dummy 7 -59 7
+summon minecraft:armor_stand -10 -59 6 {ArmorItems:[{},{},{},{id:"nekomasfixed:golden_crown",count:1}],HandItems:[{id:"nekomasfixed:wildfire_trident",count:1},{id:"nekomasfixed:wildfire_shield",count:1}]}
+summon minecraft:armor_stand -12 -59 6 {ArmorItems:[{id:"nekomasfixed:turtle_boots",count:1},{id:"nekomasfixed:turtle_leggings",count:1},{id:"nekomasfixed:turtle_chestplate",count:1},{id:"nekomasfixed:goat_horn_diamond_helmet",count:1}]}
+summon minecraft:armor_stand 10 -59 6 {ArmorItems:[{},{},{},{id:"nekomasfixed:poppy_flower_crown",count:1}]}
+summon nekomasfixed:big_oak_boat -6 -59 16
+summon nekomasfixed:huge_cherry_boat 6 -59 18
+wait 80
+hud off
+shot final_gallery
+hud on
+item replace entity @s hotbar.0 with nekomasfixed:netherite_sickle
+item replace entity @s hotbar.1 with nekomasfixed:quiver
+item replace entity @s hotbar.2 with nekomasfixed:slingshot
+item replace entity @s hotbar.3 with nekomasfixed:red_dyed_brush
+item replace entity @s hotbar.4 with nekomasfixed:fire_prism
+item replace entity @s hotbar.5 with nekomasfixed:big_baobab_boat
+item replace entity @s hotbar.6 with nekomasfixed:ghost_pepper
+item replace entity @s hotbar.7 with nekomasfixed:wildfire_trident
+item replace entity @s hotbar.8 with nekomasfixed:golden_crown
+tooltip on
+wait 10
+shot final_tooltip_ptbr
+tooltip off
+screen menu
+wait 10
+shot final_menu_ptbr
+screen entity
+wait 10
+shot final_entity_ptbr
+screen blocks
+wait 10
+shot final_blocks_ptbr
+screen none
+useblock -8 -59 3
+wait 15
+shot final_kiln_ptbr
+closegui
+useblock -7 -59 3
+wait 15
+shot final_fletching_ptbr
+closegui
+useblock -6 -59 3
+wait 15
+shot final_pyrotechnics_ptbr
+closegui
+advancement grant @s everything
+wait 10

@@ -55,4 +55,12 @@ public class PotRegistry {
         PotMaps.register();
         ItemGroupRegistry.MAIN_EXTRAS.add(TERRACOTTA_DECORATED_POT_ITEM);
     }
+
+    /** Terracotta pots sit beside vanilla's decorated pot in the vanilla tabs too. */
+    public static void onBuildCreativeTabs(net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey().equals(net.minecraft.world.item.CreativeModeTabs.FUNCTIONAL_BLOCKS)
+                || event.getTabKey().equals(net.minecraft.world.item.CreativeModeTabs.REDSTONE_BLOCKS)) {
+            event.accept(TERRACOTTA_DECORATED_POT_ITEM);
+        }
+    }
 }

@@ -61,6 +61,7 @@ public class NekomasFixed {
         modBus.addListener(NekomasFixed::onRegister);
         modBus.addListener(SyncHandler::register);
         modBus.addListener(BlockEntityRegistry::attachBlockEntities);
+        modBus.addListener(PotRegistry::onBuildCreativeTabs);
         modBus.addListener(SulfurRegistry::attachBlockEntities);
         modBus.addListener(EntityTypeRegistry::registerAttributes);
         modBus.addListener(EntityTypeRegistry::registerSpawnPlacements);
