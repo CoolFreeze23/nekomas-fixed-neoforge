@@ -455,7 +455,7 @@ public class BoatsGameTests {
     }
 
     /** Drives the real spawner over a far-off patch of ocean, in a batch of its own because it changes the time of day. */
-    @GameTest(template = "platform", batch = "boat_patrol", timeoutTicks = 200)
+    @GameTest(template = "platform", batch = "boat_patrol", timeoutTicks = 200, batch = "patrols")
     public static void patrolsSailOnTheOcean(GameTestHelper h) {
         ServerLevel level = h.getLevel();
         // A new patch each run: a kept test world may still hold the ships of an earlier one.
@@ -485,6 +485,10 @@ public class BoatsGameTests {
         h.startSequence().thenExecuteAfter(2, () -> {
             h.assertTrue(level.getBiome(centre).is(net.minecraft.tags.BiomeTags.IS_OCEAN), "patch should be ocean");
             h.assertTrue(level.isDay(), "should be day");
+            // The spawner picks any player in the level, so this test's player must be the only one.
+            for (ServerPlayer other : List.copyOf(level.players())) {
+                if (other != player) level.getServer().getPlayerList().remove(other);
+            }
             PatrolSpawner spawner = new PatrolSpawner();
             int spawned = 0;
             for (int i = 0; i < 4_000_000 && spawned == 0; i++) {

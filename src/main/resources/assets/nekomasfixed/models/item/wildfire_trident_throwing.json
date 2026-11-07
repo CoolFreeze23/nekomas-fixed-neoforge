@@ -1,0 +1,12 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "nekomasfixed:item/wildfire_trident_throwing_in_hand"
+  },
+  "perspectives": {
+    "gui": { "parent": "nekomasfixed:item/wildfire_trident_gui" },
+    "ground": { "parent": "nekomasfixed:item/wildfire_trident_gui" },
+    "fixed": { "parent": "nekomasfixed:item/wildfire_trident_gui" }
+  }
+}

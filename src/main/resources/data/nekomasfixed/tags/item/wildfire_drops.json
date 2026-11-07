@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "nekomasfixed:nether_heart",
+    {
+      "id": "nekomasfixed:jewel_armor_trim_smithing_template",
+      "required": false
+    }
+  ]
+}
